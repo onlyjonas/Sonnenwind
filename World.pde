@@ -19,7 +19,7 @@ class World {
     x=0;
     mySpeed = 0.1;
     
-    sun = new Sun(this, 1500, 15, 40);
+    sun = new Sun(this, 600, 15, 100);
   }
 
   void render()

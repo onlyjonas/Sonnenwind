@@ -101,4 +101,9 @@ class WsprNode{
       if(count > 0) e = e/count;
       return e; 
     }
+    
+    float getSize(){
+      float s = 10+getEnergy()*100;
+      return s;
+    }
 }

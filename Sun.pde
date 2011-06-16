@@ -6,6 +6,7 @@ class Sun{
     World world;
     ArrayList<WindParticle> windParticle = new ArrayList();
     int timer, windDelay, windIndex;
+    float horizon;
     
     Sun(World _world, float _x, float _y, int particle)
     {
@@ -41,8 +42,10 @@ class Sun{
     
     private void drawWind()
     {
+      
+      // emit particles
       if(timer>windDelay){
-        windParticle.get(windIndex).setTarget(-40, random(90,100));
+        windParticle.get(windIndex).setTarget(-20, random(world.horizon-10,world.horizon+10));
         
         if(windIndex<windParticle.size()-1) windIndex++;
         else windIndex=0;
@@ -51,7 +54,7 @@ class Sun{
         timer++;
       } 
       
-      
+      // render particles
       for (int i = 0;i < windParticle.size(); i++) {
         windParticle.get(i).render();
       }
