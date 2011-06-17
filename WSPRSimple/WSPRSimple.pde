@@ -71,7 +71,7 @@ void draw() {
   // sun
   pushMatrix();
   // warum + PI???
-  rotate(radians((float)sun.getAzimuth()));
+  rotate(radians((float)sun.getAzimuth())+PI);
   fill(255,255,0,100);
   noStroke();
   float sunSize = (float)(sun.getElevation()+45.0)/135.0 * 50.0;
