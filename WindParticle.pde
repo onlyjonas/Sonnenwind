@@ -4,12 +4,12 @@ class WindParticle{
   PVector pos;
   PVector posHist;
   PVector target;  
-  float stepX;
   
   color myColor;
   int delayLength = 10;
   float[] delayLine;
   int delayPos;
+  float speed;
   
   WindParticle (World _world, float _x, float _y) {
     world = _world;
@@ -18,9 +18,9 @@ class WindParticle{
     posHist = new PVector(_x, _y);
     target = new PVector(_x, _y);
     myColor = color(255,255,0);
-    stepX = 3;
     delayLine = new float[delayLength];
     delayPos=0;
+    speed = random(2,5);
  }
   
   
@@ -33,11 +33,16 @@ class WindParticle{
   void update(){
     
     // posHist to create lines
-    posHist.x = pos.x;
-    posHist.y = pos.y;
+    if(random(10)>8){
+      posHist.x = pos.x;
+      posHist.y = pos.y;
+    }
     
-    // pos.x normal easing
-    pos.x += ((target.x - pos.x) * 0.05);
+    // pos.x 
+    //if(pos.x < target.x) pos.x += speed;
+    //else pos.x -= speed;
+    
+    pos.x +=constrain(((target.x - pos.x) * 0.01), -6, 6);
     
     // pos.y bounce easing  
     delayLine[delayPos] = pos.y;
@@ -53,14 +58,12 @@ class WindParticle{
           ty= target.y- world.nodes.get(i).getEnergy()*100; 
       }
     }
-    pos.y += ((ty - delayLine[(delayPos+1)%delayLine.length]) * 0.1);
+    
+    pos.y += ((ty - delayLine[(delayPos+1)%delayLine.length]) * 0.08);
      
     // Reset origin position 
-    if (pos.x < 0) {
-      pos.x = origin.x;
-      pos.y = origin.y;
-      posHist.x = origin.x;
-      posHist.y = origin.y;
+    if (pos.dist(target)<50) {
+      resetToOrigin();
     }
  
   } 
@@ -68,6 +71,13 @@ class WindParticle{
   void setTarget(float _x, float _y){
     target.x = _x; 
     target.y = _y;
+  }
+  
+  void resetToOrigin(){
+      pos.x = origin.x;
+      pos.y = origin.y;
+      posHist.x = origin.x;
+      posHist.y = origin.y;
   }
 
 }

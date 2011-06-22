@@ -40,12 +40,16 @@ class Sun{
       line(pos.x,pos.y-mySize/2, pos.x, pos.y+mySize/2);
     }
     
+    float direction = -50;
     private void drawWind()
     {
-      
+     
       // emit particles
       if(timer>windDelay){
-        windParticle.get(windIndex).setTarget(-20, random(world.horizon-10,world.horizon+10));
+        if(direction==-50) direction = world.w +50 ;
+        else direction = -50;
+        
+        windParticle.get(windIndex).setTarget(direction, random(world.horizon-10,world.horizon-40));
         
         if(windIndex<windParticle.size()-1) windIndex++;
         else windIndex=0;
