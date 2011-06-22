@@ -6,16 +6,16 @@ class Webcam{
     
     Webcam(PApplet parent, int _w, int _h)
     { 
-      w = 320;
-      h = 240;
-      cam = new Capture(parent, w, h);
+      w = _w;
+      h = _h;
+      cam = new Capture(parent, 320, 240);
     }
     
     void render(){
         
         if (cam.available() == true) {
           cam.read();
-          image(cam,0,0);
+          image(cam,0,0,w,h);
         }
     }
     
