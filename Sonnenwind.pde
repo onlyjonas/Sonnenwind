@@ -12,7 +12,7 @@ void setup() {
   background(0); 
   myRotation = 0; 
   world = new World((600 * 8), 512, myRotation); // screenSize.x * 8 = camera FOV: ~45°
-  webcam = new Webcam(this, 600, 450);
+  //webcam = new Webcam(this, 600, 450);
 
   PFont font;
   font = loadFont("Gulim-11.vlw");
@@ -23,7 +23,7 @@ void setup() {
 void draw() {
 
   // drawmode: 0 = present / 1 = debug  
-  int drawmode = 0;
+  int drawmode = 1;
 
   switch(drawmode) {
   case 0: 
@@ -59,11 +59,15 @@ void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
       myRotation +=100;
+      world.setRotation(myRotation);
     } 
     else if (keyCode == DOWN) {
       myRotation -= 100;
+      world.setRotation(myRotation);
     }
-    world.setRotation(myRotation);
+    else if (keyCode == ALT) {
+      world.addAtractor();
+    }
   }
 }
 

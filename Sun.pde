@@ -14,7 +14,7 @@ class Sun{
       pos = new PVector(_x, _y);
       myColor = color(255,255,0);
       mySize = 20;
-      myParticle = 1000;
+      myParticle = 800;
       windDelay=10;
       windIndex=0;
       timer=0;
@@ -50,7 +50,7 @@ class Sun{
         if(direction==-100) direction = world.w +100 ;
         else direction = -100;
         
-        windParticle.get(windIndex).setTarget(direction, random(30,50));
+        windParticle.get(windIndex).setTarget(direction, random(40,50));
         
         if(windIndex<windParticle.size()-1) windIndex++;
         else windIndex=0;

@@ -7,7 +7,7 @@ class World {
   float r;
   float mySpeed;
   ArrayList<WsprNode> nodes = new ArrayList();
-
+  ArrayList<PAtractor> atractors = new ArrayList();
   Sun sun;
   
   World(int _w, int _h, float _r)
@@ -38,6 +38,12 @@ class World {
       node.render();
     }
     
+    // atractors
+    for (int j = 0;j < atractors.size(); j++) {
+      PAtractor atractor = atractors.get(j);
+      atractor.render();
+    }
+    
     // sun
     sun.render();
     
@@ -63,7 +69,21 @@ class World {
   {
     r=_r;
   }
-
+  
+  void addAtractor() {
+  
+    // Pos
+    float _x = random(w);
+    float _y = random(30, horizon-30);
+    
+    // Energy (Size)
+    float _s = random(20, 80);
+    
+    // Add Atractor
+    PAtractor atractor = new PAtractor(_x,_y,_s);
+    atractors.add(atractor);
+  }
+  
   void addNode() {
     // Call Sign
     String name = "ABCDE"+ (int)random(20); 
@@ -96,7 +116,9 @@ class World {
       WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
       nodes.add(node);
     } 
-  }  
+  } 
+ 
+  
   /*
   void mapWsprNode(){
    // http://wsprnet.org/olddb
