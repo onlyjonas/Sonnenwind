@@ -1,3 +1,5 @@
+import processing.opengl.*;
+
 World world;
 Webcam webcam;
 int screenW; 
@@ -6,7 +8,7 @@ int drawMode;
 float myRotation; 
 
 void setup() {
-  size(1024, 600, P2D); // Webcam 512*600 | Screen 512*600
+  size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
   frameRate(24);
   strokeWeight(1); 
   background(0); 
@@ -42,7 +44,7 @@ void draw() {
 
   case 1:
     noStroke();
-    fill(0, 100);
+    fill(0);
     rect(0, 0, width, height); 
     translate(0, 50);
     world.render();
