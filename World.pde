@@ -9,7 +9,7 @@ class World {
   ArrayList<WsprNode> nodes = new ArrayList();
   ArrayList<PAtractor> atractors = new ArrayList();
   Sun sun;
-
+  
   World(int _w, int _h, float _r)
   {
     w=_w;
@@ -18,7 +18,7 @@ class World {
     horizon = 100;
     x=0;
     mySpeed = 0.1;
-
+    
     sun = new Sun(this, 1200, 15);
   }
 
@@ -37,16 +37,16 @@ class World {
       WsprNode node = nodes.get(i);
       node.render();
     }
-
+    
     // atractors
     for (int j = 0;j < atractors.size(); j++) {
       PAtractor atractor = atractors.get(j);
       atractor.render();
     }
-
+    
     // sun
     sun.render();
-
+    
     popMatrix();
   }
 
@@ -69,33 +69,33 @@ class World {
   {
     r=_r;
   }
-
+  
   void addAtractor() {
-
+  
     // Pos
     float _x = random(w);
     float _y = random(30, horizon-30);
-
+    
     // Energy (Size)
     float _s = random(20, 80);
-
+    
     // Add Atractor
-    PAtractor atractor = new PAtractor(_x, _y, _s);
+    PAtractor atractor = new PAtractor(_x,_y,_s);
     atractors.add(atractor);
   }
-
+  
   void addNode() {
     // Call Sign
     String name = "ABCDE"+ (int)random(20); 
 
     // Azimuth (winkel vom Nordpol)
     float azimuth = random(360); // TEST VALUE
-
+    
     // Distance
     float distance = random(500); // TEST VALUE (maxDis: 500)
     // Energy
     float energy = random(1);
-
+   
     // check if node already exists 
     int index = -1;
     for (int i=0; i < nodes.size(); i++) {
@@ -115,10 +115,10 @@ class World {
       // NEW NODE
       WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
       nodes.add(node);
-    }
+    } 
   } 
-
-
+ 
+  
   /*
   void mapWsprNode(){
    // http://wsprnet.org/olddb
