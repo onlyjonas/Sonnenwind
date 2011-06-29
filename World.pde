@@ -7,7 +7,6 @@ class World {
   float r;
   float mySpeed;
   ArrayList<WsprNode> nodes = new ArrayList();
-  ArrayList<PAtractor> atractors = new ArrayList();
   Sun sun;
   
   World(int _w, int _h, float _r)
@@ -36,12 +35,6 @@ class World {
     for (int i = 0;i < nodes.size(); i++) {
       WsprNode node = nodes.get(i);
       node.render();
-    }
-    
-    // atractors
-    for (int j = 0;j < atractors.size(); j++) {
-      PAtractor atractor = atractors.get(j);
-      atractor.render();
     }
     
     // sun
@@ -78,10 +71,7 @@ class World {
     
     // Energy (Size)
     float _s = random(20, 80);
-    
-    // Add Atractor
-    PAtractor atractor = new PAtractor(_x,_y,_s);
-    atractors.add(atractor);
+
   }
   
   void addNode() {
