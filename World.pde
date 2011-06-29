@@ -19,7 +19,7 @@ class World {
     x=0;
     mySpeed = 0.1;
     
-    sun = new Sun(this, 1200, 15);
+    sun = new Sun(this, 900, 15);
   }
 
   void render()
@@ -117,6 +117,15 @@ class World {
       nodes.add(node);
     } 
   } 
+ 
+ void setSunActivityField() {
+   sun.setActivityField((int)random(sun.activityFields-1), random(1));  
+ }
+ 
+ void setSunPos(float _x, float _y) {
+   sun.pos.x = _x;
+   sun.pos.y = _y;
+ }
  
   
   /*

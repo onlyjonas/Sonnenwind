@@ -57,6 +57,10 @@ void mousePressed() {
   world.addNode();
 }
 
+
+// TMP
+PVector sunPos = new PVector(800,15);
+
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
@@ -66,9 +70,19 @@ void keyPressed() {
     else if (keyCode == DOWN) {
       myRotation -= 100;
       world.setRotation(myRotation);
+    }   
+    else if (keyCode == LEFT) {
+      sunPos.x += 10;
+      world.setSunPos(sunPos.x, sunPos.y);
     }
+    else if (keyCode == RIGHT) {
+      sunPos.x -= 10;
+      world.setSunPos(sunPos.x, sunPos.y);
+    }
+    
     else if (keyCode == ALT) {
-      world.addAtractor();
+      //world.addAtractor();
+      world.setSunActivityField();
     }
   }
 }

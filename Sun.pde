@@ -2,26 +2,22 @@ class Sun {
 
   PVector pos;
   color myColor;
-  int mySize;
+  int mySize =20;
   World world;
-  ArrayList<WindCurve> windCurves = new ArrayList();
+  SunWind sunwind;
+  
   int timer, windDelay, windIndex;
+  int activityFields=36;
   float horizon;
 
   Sun(World _world, float _x, float _y)
   {
     pos = new PVector(_x, _y);
     myColor = color(255, 255, 0);
-    mySize = 20;
-
     windDelay=5;
     timer=0;
     world = _world;
-
-    for (int i = 0;i < 3; i++) {
-      WindCurve wind = new WindCurve(world, _y+i*5);  
-      windCurves.add(wind);
-    }
+    sunwind = new SunWind(pos.x, pos.y, 0, world.w+135, activityFields); //+135 - anders passt es nicht ???
   }
 
   void render()
@@ -41,22 +37,10 @@ class Sun {
 
   private void drawWind()
   {
-    // render particles
-    for (int i = 0;i < windCurves.size(); i++) {
-      windCurves.get(i).update();
-      windCurves.get(i).render();
-    }
-
-    if (timer>windDelay) {
-      for (int i = 0;i < windCurves.size(); i++) {
-        windCurves.get(i).pulse(-20);
-      }
-      timer=0;
-    }
-    else {
-      timer++;
-    }
+    sunwind.update(pos.x, pos.y);
+    sunwind.render();
   }
+
 
   void setPos(float _x, float _y)
   {
@@ -67,6 +51,10 @@ class Sun {
   void setColor(int r, int g, int b)
   {
     myColor = color(r, g, b);
+  }
+  
+  void setActivityField(int i, float activity) {
+    sunwind.setActivityField(i,activity);
   }
 }
 

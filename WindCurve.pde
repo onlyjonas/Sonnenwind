@@ -1,23 +1,36 @@
 class WindCurve {
 
   PVector start, end; 
-  int detail=20;
-  float idleStrenght=20.0;
+  int detail;
+
   PVector[] vertexPos;
   PVector[] vertexTarget;
+  ArrayList<WindVertex> windVertices = new ArrayList();
+
   int pulseIndex=0;
 
-  WindCurve(World world, float _y) {
-    start = new PVector(0, _y); 
-    end = new PVector(world.w, _y);
+  WindCurve(float _startX, float _startY, float _endX, float _endY, int _detail) {
+    start = new PVector(_startX, _startY); 
+    end = new PVector(_endX, _endY);
+    detail = _detail;
 
     vertexPos = new PVector[detail];
     vertexTarget = new PVector[detail];
-    
+
     float step = (end.x-start.x)/detail;
+
+
+    //    vertexPos[0]= new PVector(start.x,start.y) ;
+    //    vertexTarget[0]=vertexPos[0];
+    //    
+    //    for (int i=0; i<detail; i++) {
+    //      vertexPos[i]= new PVector(step*i+start.x, end.y) ;
+    //      vertexTarget[i]=vertexPos[i];
+    //    }
+
     for (int i=0; i<detail; i++) {
-      vertexPos[i]= new PVector(step*i+start.x, _y) ;
-      vertexTarget[i]= new PVector(vertexPos[i].x, 50) ;
+      WindVertex windVertex = new WindVertex(step*i+start.x, end.y);
+      windVertices.add(windVertex);
     }
   }
 
@@ -25,41 +38,67 @@ class WindCurve {
     stroke(255);
     noFill();
     beginShape();
-    
-    curveVertex(vertexPos[0].x-100, vertexPos[0].y); // the first control point
+
+    curveVertex(windVertices.get(0).pos.x-100, windVertices.get(0).pos.y); // the first control point
 
     for (int i=0; i<detail; i++) {
-      curveVertex(vertexPos[i].x, vertexPos[i].y);
-      println(vertexPos[i].x);
+      curveVertex(windVertices.get(i).pos.x, windVertices.get(i).pos.y);
     }
 
-    curveVertex(vertexPos[detail-1].x-100, vertexPos[detail-1].y); // is also the last control point
+    curveVertex(windVertices.get(detail-1).pos.x-100, windVertices.get(detail-1).pos.y); // is also the last control point
 
     endShape();
   }
 
-  void update() {
+  void update(float _sunX, float _sunY) {
+    float step = (end.x-start.x)/detail;
+
     for (int i=0; i<detail; i++) {
-     vertexPos[i].y += (( vertexTarget[i].y - vertexPos[i].y) * 0.08); 
-     stroke(255,0,0);
-     line(vertexPos[i].x,vertexPos[i].y-5,vertexPos[i].x,vertexPos[i].y+5);   
+
+      // check sun position, if sun is close to vertex
+      if (_sunX > i*step-step/2 && _sunX < i*step+step/2) {
+        windVertices.get(i).target.x = _sunX;  
+        windVertices.get(i).target.y = _sunY;
+      }
+      else {
+        windVertices.get(i).target.x = i*step;  
+        windVertices.get(i).target.y = 50 + windVertices.get(i).offset; // 50 - TMP
+      }
+
+      windVertices.get(i).pos.x += (( windVertices.get(i).target.x - windVertices.get(i).pos.x) * 0.1); 
+      windVertices.get(i).pos.y += (( windVertices.get(i).target.y - windVertices.get(i).pos.y) * 0.08); 
+      stroke(255, 0, 0);
+      line(windVertices.get(i).pos.x, windVertices.get(i).pos.y-5, windVertices.get(i).pos.x, windVertices.get(i).pos.y+5);
     }
   }
-  
-  void pulse(float pulse) {
-        
-    print("target: "+ vertexTarget[pulseIndex].y);
-    vertexTarget[pulseIndex].y += pulse;
-    println(" + " +  vertexTarget[pulseIndex].y);
-    
-    int prev = pulseIndex-1;
-    if(prev<0)prev=detail-1;
 
-    vertexTarget[prev].y =40; // start
-    
-    if(pulseIndex>=detail-1) pulseIndex=0;
-    else pulseIndex++;    
-    
+  //  void pulse(float pulse) {
+  //
+  ////    print("target: "+ vertexTarget[pulseIndex].y);
+  //    vertexTarget[pulseIndex].y += pulse;
+  //    
+  //    int prev = pulseIndex-1;
+  //    if (prev<0)prev=detail-1;
+  //
+  //    vertexTarget[prev].y =40; // start
+  //
+  //    if (pulseIndex>=detail-1) pulseIndex=0;
+  //    else pulseIndex++;
+  //  }
+
+  void setActivityOffset(int i, float offset) {
+    windVertices.get(i).offset = offset;
+  }
+
+  class WindVertex {
+    PVector pos, target, startPos;
+    float offset=0; // 0 = no activity | 1 = full activity
+
+    WindVertex(float _posX, float _posY) {
+      pos = new PVector(_posX, _posY);
+      target = new PVector(_posX, _posY); 
+      startPos = new PVector(_posX, _posY);
+    }
   }
 }
 
