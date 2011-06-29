@@ -53,8 +53,8 @@ class Sun {
     myColor = color(r, g, b);
   }
   
-  void setActivityField(int i, float activity) {
-    sunwind.setActivityField(i,activity);
+  void setFieldActivity(int i, float activity) {
+    sunwind.setFieldActivity(i,activity);
   }
 }
 

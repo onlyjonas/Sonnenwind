@@ -108,8 +108,8 @@ class World {
     } 
   } 
  
- void setSunActivityField() {
-   sun.setActivityField((int)random(sun.activityFields-1), random(1));  
+ void setSunFieldActivity() {
+   sun.setFieldActivity((int)random(sun.activityFields-1), random(1));  
  }
  
  void setSunPos(float _x, float _y) {

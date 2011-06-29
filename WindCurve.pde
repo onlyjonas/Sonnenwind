@@ -61,8 +61,8 @@ class WindCurve {
         windVertices.get(i).target.y = _sunY;
       }
       else {
-        windVertices.get(i).target.x = i*step;  
-        windVertices.get(i).target.y = 50 + windVertices.get(i).offset; // 50 - TMP
+        windVertices.get(i).target.x = windVertices.get(i).startPos.x;  
+        windVertices.get(i).target.y = windVertices.get(i).startPos.y + windVertices.get(i).offset; 
       }
 
       windVertices.get(i).pos.x += (( windVertices.get(i).target.x - windVertices.get(i).pos.x) * 0.1); 

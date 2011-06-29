@@ -72,17 +72,17 @@ void keyPressed() {
       world.setRotation(myRotation);
     }   
     else if (keyCode == LEFT) {
-      sunPos.x += 10;
+      sunPos.x -= 10;
       world.setSunPos(sunPos.x, sunPos.y);
     }
     else if (keyCode == RIGHT) {
-      sunPos.x -= 10;
+      sunPos.x += 10;
       world.setSunPos(sunPos.x, sunPos.y);
     }
     
     else if (keyCode == ALT) {
       //world.addAtractor();
-      world.setSunActivityField();
+      world.setSunFieldActivity();
     }
   }
 }

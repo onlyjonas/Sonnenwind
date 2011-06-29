@@ -15,7 +15,7 @@ class SunWind {
 
     fieldActivity = new float[detail];
     for (int i=0; i < detail; i++) fieldActivity[i]=0;
-    
+
     for (int i = 0;i < windLines; i++) {
       WindCurve wind = new WindCurve(start.x, start.y, end.x, end.y, detail);  
       windCurves.add(wind);
@@ -39,9 +39,11 @@ class SunWind {
     }
   }
 
-  void setActivityField(int index, float activity) {
+  void setFieldActivity(int index, float activity) {
     fieldActivity[index] = activity;
-    for (int i = 0;i < windCurves.size(); i++) windCurves.get(i).setActivityOffset(index, map(activity, 0,1, 0, 10*i));
+    for (int i = 0;i < windCurves.size(); i++) {
+      windCurves.get(i).setActivityOffset(index, map(activity, 0, 1, 0, 10*i));
+    }
   }
 }
 
