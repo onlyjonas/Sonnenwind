@@ -6,8 +6,7 @@ class WindCurve {
   PVector[] vertexPos;
   PVector[] vertexTarget;
   ArrayList<WindVertex> windVertices = new ArrayList();
-
-  int pulseIndex=0;
+  int time=0;
 
   WindCurve(float _startX, float _startY, float _endX, float _endY, float _height, int _detail) {
     start = new PVector(_startX, _startY); 
@@ -58,46 +57,52 @@ class WindCurve {
                                      + windVertices.get(i).nodeOffset;
       }
 
+      // pulse / wind effect
+      if (floor(random(50))==i) windVertices.get(i).updatePulse();
+
+      // move to target (easing)
       windVertices.get(i).pos.x += (( windVertices.get(i).target.x - windVertices.get(i).pos.x) * 0.1); 
       windVertices.get(i).pos.y += (( windVertices.get(i).target.y - windVertices.get(i).pos.y) * 0.08); 
-      stroke(255, 0, 0);
+      
+      // draw debug line
+      stroke(255, 0, 0); 
       line(windVertices.get(i).pos.x, windVertices.get(i).pos.y-5, windVertices.get(i).pos.x, windVertices.get(i).pos.y+5);
     }
+    
+    //Timer
+//    if(time<windVertices.size())time++;
+//    else time=0;
+    
   }
-
-  //  void pulse(float pulse) {
-  //
-  ////    print("target: "+ vertexTarget[pulseIndex].y);
-  //    vertexTarget[pulseIndex].y += pulse;
-  //    
-  //    int prev = pulseIndex-1;
-  //    if (prev<0)prev=detail-1;
-  //
-  //    vertexTarget[prev].y =40; // start
-  //
-  //    if (pulseIndex>=detail-1) pulseIndex=0;
-  //    else pulseIndex++;
-  //  }
 
   void setActivityOffset(int i, float offset) {
     offset = offset * h/5; // h/5 = 20 (max offset)
     windVertices.get(i).acivityOffset = offset;
   }
   
-  void setNodeOffset(int i, float offset) {
-    offset = offset * h/2;
+  void setNodeOffset(float nodeX, float energy) {
+    
+    int i =floor(nodeX/fieldWidth) ;
+    float offset = energy * h/2 *-1;
     windVertices.get(i).nodeOffset = offset;
   }
 
   class WindVertex {
     PVector pos, target, startPos;
-    float acivityOffset=0; // 0 = no activity | 1 = full activity
+    float acivityOffset=0;
     float nodeOffset=0;
-    
+    float pulse=0;
     WindVertex(float _posX, float _posY) {
       pos = new PVector(_posX, _posY);
       target = new PVector(_posX, _posY); 
       startPos = new PVector(_posX, _posY);
+    }
+    
+    void updatePulse(){
+      if (pulse > 0) pulse=0;
+      else pulse=20;
+      
+      target.y += pulse;    
     }
   }
 }

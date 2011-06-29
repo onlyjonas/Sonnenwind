@@ -46,8 +46,10 @@ class SunWind {
     }
   }
   
-  void setNodeEnergy(int index, float activity) {
-    
+  void updateNodeEnergy(float nodeX, float energy) {
+    for (int i = 0;i < windCurves.size(); i++) {
+      windCurves.get(i).setNodeOffset(nodeX, energy);
+    } 
   }
 }
 

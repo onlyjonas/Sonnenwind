@@ -14,7 +14,7 @@ void setup() {
   background(0); 
   myRotation = 0; 
   world = new World((600 * 8), 512, myRotation); // screenSize.x * 8 = camera FOV: ~45°
-  //webcam = new Webcam(this, 600, 450);
+//  webcam = new Webcam(this, 600, 450);
 
   PFont font;
   font = loadFont("Gulim-11.vlw");
@@ -33,13 +33,13 @@ void draw() {
     translate(-height, width/2); 
 
     noStroke();
-    fill(0, 100);
+    fill(0);
     rect(0, -62, height, width/2+62); 
 
     world.render();
 
     translate(0, -width/2);
-    webcam.render();
+//    webcam.render();
     break;
 
   case 1:

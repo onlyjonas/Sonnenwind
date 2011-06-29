@@ -59,7 +59,11 @@ class Sun {
   }
   
   void updateNodeEnergy(){
-    
+    for(int i=0;i<world.nodes.size();i++){
+      float nodeX = world.nodes.get(i).pos.x;
+      float nodeEnergy = world.nodes.get(i).getEnergy();
+      sunwind.updateNodeEnergy(nodeX, nodeEnergy);
+    }  
   }
 }
 
