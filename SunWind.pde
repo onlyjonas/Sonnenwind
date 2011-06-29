@@ -7,17 +7,17 @@ class SunWind {
   float[] fieldActivity; // 0 = no activity | 1 = full activity
   ArrayList<WindCurve> windCurves = new ArrayList();
 
-  SunWind(float _sunX, float _sunY, float _startX, float _endX, int _detail) {
+  SunWind(float _sunX, float _sunY, float _width, float _height ,int _detail) {
 
-    start = new PVector(_startX, 50); 
-    end = new PVector(_endX, 50);
+    start = new PVector(0, _height/2); 
+    end = new PVector(_width, _height/2);
     detail = _detail;
 
     fieldActivity = new float[detail];
     for (int i=0; i < detail; i++) fieldActivity[i]=0;
 
     for (int i = 0;i < windLines; i++) {
-      WindCurve wind = new WindCurve(start.x, start.y, end.x, end.y, detail);  
+      WindCurve wind = new WindCurve(start.x, start.y, end.x, end.y, _height, detail);  
       windCurves.add(wind);
     }
   }
@@ -42,8 +42,12 @@ class SunWind {
   void setFieldActivity(int index, float activity) {
     fieldActivity[index] = activity;
     for (int i = 0;i < windCurves.size(); i++) {
-      windCurves.get(i).setActivityOffset(index, map(activity, 0, 1, 0, 10*i));
+      windCurves.get(i).setActivityOffset(index, activity*i);
     }
+  }
+  
+  void setNodeEnergy(int index, float activity) {
+    
   }
 }
 

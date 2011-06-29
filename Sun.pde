@@ -17,7 +17,7 @@ class Sun {
     windDelay=5;
     timer=0;
     world = _world;
-    sunwind = new SunWind(pos.x, pos.y, 0, world.w+135, activityFields); //+135 - anders passt es nicht ???
+    sunwind = new SunWind(pos.x, pos.y, world.w+135, world.horizon, activityFields); //+135 - anders passt es nicht ???
   }
 
   void render()
@@ -38,6 +38,7 @@ class Sun {
   private void drawWind()
   {
     sunwind.update(pos.x, pos.y);
+    updateNodeEnergy();
     sunwind.render();
   }
 
@@ -55,6 +56,10 @@ class Sun {
   
   void setFieldActivity(int i, float activity) {
     sunwind.setFieldActivity(i,activity);
+  }
+  
+  void updateNodeEnergy(){
+    
   }
 }
 

@@ -2,34 +2,26 @@ class WindCurve {
 
   PVector start, end; 
   int detail;
-
+  float h, w, fieldWidth;
   PVector[] vertexPos;
   PVector[] vertexTarget;
   ArrayList<WindVertex> windVertices = new ArrayList();
 
   int pulseIndex=0;
 
-  WindCurve(float _startX, float _startY, float _endX, float _endY, int _detail) {
+  WindCurve(float _startX, float _startY, float _endX, float _endY, float _height, int _detail) {
     start = new PVector(_startX, _startY); 
     end = new PVector(_endX, _endY);
     detail = _detail;
+    h = _height;
+    w = end.x-start.x;
+    fieldWidth = w/detail;
 
     vertexPos = new PVector[detail];
     vertexTarget = new PVector[detail];
 
-    float step = (end.x-start.x)/detail;
-
-
-    //    vertexPos[0]= new PVector(start.x,start.y) ;
-    //    vertexTarget[0]=vertexPos[0];
-    //    
-    //    for (int i=0; i<detail; i++) {
-    //      vertexPos[i]= new PVector(step*i+start.x, end.y) ;
-    //      vertexTarget[i]=vertexPos[i];
-    //    }
-
     for (int i=0; i<detail; i++) {
-      WindVertex windVertex = new WindVertex(step*i+start.x, end.y);
+      WindVertex windVertex = new WindVertex(fieldWidth*i+start.x, end.y);
       windVertices.add(windVertex);
     }
   }
@@ -51,18 +43,19 @@ class WindCurve {
   }
 
   void update(float _sunX, float _sunY) {
-    float step = (end.x-start.x)/detail;
-
+    
     for (int i=0; i<detail; i++) {
 
       // check sun position, if sun is close to vertex
-      if (_sunX > i*step-step/2 && _sunX < i*step+step/2) {
+      if (_sunX > i*fieldWidth-fieldWidth/2 && _sunX < i*fieldWidth+fieldWidth/2) {
         windVertices.get(i).target.x = _sunX;  
         windVertices.get(i).target.y = _sunY;
       }
       else {
         windVertices.get(i).target.x = windVertices.get(i).startPos.x;  
-        windVertices.get(i).target.y = windVertices.get(i).startPos.y + windVertices.get(i).offset; 
+        windVertices.get(i).target.y = windVertices.get(i).startPos.y 
+                                     + windVertices.get(i).acivityOffset
+                                     + windVertices.get(i).nodeOffset;
       }
 
       windVertices.get(i).pos.x += (( windVertices.get(i).target.x - windVertices.get(i).pos.x) * 0.1); 
@@ -87,13 +80,20 @@ class WindCurve {
   //  }
 
   void setActivityOffset(int i, float offset) {
-    windVertices.get(i).offset = offset;
+    offset = offset * h/5; // h/5 = 20 (max offset)
+    windVertices.get(i).acivityOffset = offset;
+  }
+  
+  void setNodeOffset(int i, float offset) {
+    offset = offset * h/2;
+    windVertices.get(i).nodeOffset = offset;
   }
 
   class WindVertex {
     PVector pos, target, startPos;
-    float offset=0; // 0 = no activity | 1 = full activity
-
+    float acivityOffset=0; // 0 = no activity | 1 = full activity
+    float nodeOffset=0;
+    
     WindVertex(float _posX, float _posY) {
       pos = new PVector(_posX, _posY);
       target = new PVector(_posX, _posY); 
