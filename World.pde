@@ -7,7 +7,7 @@ class World {
   float r;
   float mySpeed;
   ArrayList<WsprNode> nodes = new ArrayList();
-  Sun sun;
+  SunViz sunviz;
   
   World(int _w, int _h, float _r)
   {
@@ -18,7 +18,7 @@ class World {
     x=0;
     mySpeed = 0.1;
     
-    sun = new Sun(this, 900, 15);
+    sunviz = new SunViz(this, 900, 15);
   }
 
   void render()
@@ -38,7 +38,7 @@ class World {
     }
     
     // sun
-    sun.render();
+    sunviz.render();
     
     popMatrix();
   }
@@ -109,12 +109,12 @@ class World {
   } 
  
  void setSunFieldActivity() {
-   sun.setFieldActivity((int)random(sun.activityFields-1), random(1));  
+   sunviz.setFieldActivity((int)random(sunviz.activityFields-1), random(1));  
  }
  
  void setSunPos(float _x, float _y) {
-   sun.pos.x = _x;
-   sun.pos.y = _y;
+   sunviz.pos.x = _x;
+   sunviz.pos.y = _y;
  }
  
   
