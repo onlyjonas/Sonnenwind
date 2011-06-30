@@ -54,7 +54,7 @@ void draw() {
 }
 
 void mousePressed() {
-  world.addNode();
+  world.addRandomNode();
 }
 
 

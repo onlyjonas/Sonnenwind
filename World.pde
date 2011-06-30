@@ -74,7 +74,7 @@ class World {
 
   }
   
-  void addNode() {
+  void addRandomNode() {
     // Call Sign
     String name = "ABCDE"+ (int)random(20); 
 
