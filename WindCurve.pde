@@ -3,10 +3,8 @@ class WindCurve {
   PVector start, end; 
   int detail;
   float h, w, fieldWidth;
-  PVector[] vertexPos;
-  PVector[] vertexTarget;
   ArrayList<WindVertex> windVertices = new ArrayList();
-  int time=0;
+  color myColor;
 
   WindCurve(float _startX, float _startY, float _endX, float _endY, float _height, int _detail) {
     start = new PVector(_startX, _startY); 
@@ -15,18 +13,16 @@ class WindCurve {
     h = _height;
     w = end.x-start.x;
     fieldWidth = w/detail;
-
-    vertexPos = new PVector[detail];
-    vertexTarget = new PVector[detail];
+    myColor = color(255, 255, 0);
 
     for (int i=0; i<detail; i++) {
-      WindVertex windVertex = new WindVertex(fieldWidth*i+start.x, end.y);
+      WindVertex windVertex = new WindVertex(i, fieldWidth*i+start.x, end.y);
       windVertices.add(windVertex);
     }
   }
 
   void render() {
-    stroke(255);
+    stroke(myColor);
     noFill();
     beginShape();
 
@@ -44,65 +40,67 @@ class WindCurve {
   void update(float _sunX, float _sunY) {
     
     for (int i=0; i<detail; i++) {
-
-      // check sun position, if sun is close to vertex
-      if (_sunX > i*fieldWidth-fieldWidth/2 && _sunX < i*fieldWidth+fieldWidth/2) {
-        windVertices.get(i).target.x = _sunX;  
-        windVertices.get(i).target.y = _sunY;
-      }
-      else {
-        windVertices.get(i).target.x = windVertices.get(i).startPos.x;  
-        windVertices.get(i).target.y = windVertices.get(i).startPos.y 
-                                     + windVertices.get(i).acivityOffset
-                                     + windVertices.get(i).nodeOffset;
-      }
-
-      // pulse / wind effect
-      if (floor(random(50))==i) windVertices.get(i).updatePulse();
-
-      // move to target (easing)
-      windVertices.get(i).pos.x += (( windVertices.get(i).target.x - windVertices.get(i).pos.x) * 0.1); 
-      windVertices.get(i).pos.y += (( windVertices.get(i).target.y - windVertices.get(i).pos.y) * 0.08); 
-      
-      // draw debug line
-      stroke(255, 0, 0); 
-      line(windVertices.get(i).pos.x, windVertices.get(i).pos.y-5, windVertices.get(i).pos.x, windVertices.get(i).pos.y+5);
+      windVertices.get(i).update( _sunX,  _sunY);
     }
-    
-    //Timer
-//    if(time<windVertices.size())time++;
-//    else time=0;
+   
     
   }
 
   void setActivityOffset(int i, float offset) {
-    offset = offset * h/5; // h/5 = 20 (max offset)
+    offset = offset * h/4; // h/4 = 25 (max offset)
     windVertices.get(i).acivityOffset = offset;
   }
   
-  void setNodeOffset(float nodeX, float energy) {
-    
+  void setNodeOffset(float nodeX, float energy) {  
     int i =floor(nodeX/fieldWidth) ;
     float offset = energy * h/2 *-1;
     windVertices.get(i).nodeOffset = offset;
   }
 
   class WindVertex {
+    int index;
     PVector pos, target, startPos;
     float acivityOffset=0;
     float nodeOffset=0;
-    float pulse=0;
-    WindVertex(float _posX, float _posY) {
+    float pulseOffset=0;
+    long starttime, interval;
+    
+    WindVertex(int _index, float _posX, float _posY) {
       pos = new PVector(_posX, _posY);
       target = new PVector(_posX, _posY); 
       startPos = new PVector(_posX, _posY);
+      index = _index;
+      interval = 1000;
+      starttime = millis()-interval;
     }
     
-    void updatePulse(){
-      if (pulse > 0) pulse=0;
-      else pulse=20;
+    void update(float _sunX, float _sunY){
       
-      target.y += pulse;    
+      // check sun position, if sun is close to vertex
+      if (_sunX > index*fieldWidth-fieldWidth/2 && _sunX < index*fieldWidth+fieldWidth/2) {
+        target.x = _sunX;  
+        target.y = _sunY;
+      }
+      else {
+        target.x = startPos.x;  
+        target.y = startPos.y + acivityOffset + nodeOffset + pulseOffset;
+      }
+
+      // pulse / wind effect
+      if (millis() - starttime > interval + random(100*index)) {
+         if (pulseOffset>0) pulseOffset = 0;
+         else pulseOffset = 10;
+         starttime = millis();
+      }
+
+
+      // move to target (easing)
+      pos.x += (( target.x - pos.x) * 0.1); 
+      pos.y += (( target.y - pos.y) * 0.08); 
+      
+      // draw debug line
+      stroke(255, 0, 0); 
+      line(pos.x, pos.y-5, pos.x, pos.y+5);
     }
   }
 }

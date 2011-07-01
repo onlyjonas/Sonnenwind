@@ -7,10 +7,10 @@ class SunWind {
   float[] fieldActivity; // 0 = no activity | 1 = full activity
   ArrayList<WindCurve> windCurves = new ArrayList();
 
-  SunWind(float _sunX, float _sunY, float _width, float _height ,int _detail) {
+  SunWind(float _windY, float _width, float _height ,int _detail) {
 
-    start = new PVector(0, _height/2); 
-    end = new PVector(_width, _height/2);
+    start = new PVector(0, _windY); 
+    end = new PVector(_width, _windY);
     detail = _detail;
 
     fieldActivity = new float[detail];

@@ -37,6 +37,7 @@ class World {
     if (millis() - starttime > interval) {
       createWsprNodesFromWSPRManager();
       starttime = millis();
+      println("worldtimer: "+ starttime);
     }
     rotateTo(r);
     pushMatrix();
@@ -61,9 +62,9 @@ class World {
   void rotateTo(float _r)
   {
     // TODO 360 map to
-    println("-r: "+_r);
+//    println("-r: "+_r);
     float target = map(_r,0,360,0,-w);
-    println("target: "+target);
+//    println("target: "+target);
     x += ((target - x) * mySpeed);
   }
 
