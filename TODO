@@ -3,14 +3,14 @@ TODO:
 Jonas:
 [ ] Fast OPENGL video capture
 [ ] SunViz: sunwind width//+135 - anders passt es nichtÊ
-[Ê]ÊWindCurve: pulse verbessern
+[ ] WindCurve: pulse verbessern
 
 Lasse:
-[ ]Êadd Arduino-Class (Rotation-sensor)
-[Ê] SunViz: Geo-Position
-[Ê]ÊSunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
-[Ê] World: in China dann Geokoordinaten nutzen
-
+[ ] add Arduino-Class (Rotation-sensor)
+[ ] SunViz: Geo-Position
+[ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
+[ ] World: in China dann Geokoordinaten nutzen
+[ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
 
 SWP:
 # Dome
@@ -34,3 +34,4 @@ SWP:
 [ ] Imbus (M5) und Schraubenschlüssel (M10)
 [ ] Schraubenzieher schlitz
 [ ] Hängeschloss 45-15?
+
