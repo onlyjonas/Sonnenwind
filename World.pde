@@ -62,9 +62,9 @@ class World {
   {
     // TODO 360 map to
     println("-r: "+_r);
-    float target = map(_r,0,360,0,w);
+    float target = map(_r,0,360,0,-w);
     println("target: "+target);
-    x += ((_r - x) * mySpeed);
+    x += ((target - x) * mySpeed);
   }  
 
   void renderBorder()
