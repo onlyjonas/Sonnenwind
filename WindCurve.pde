@@ -76,7 +76,7 @@ class WindCurve {
   }
 
   void setActivityOffset(int i, float offset) {
-    offset = offset * h/5; // h/5 = 20 (max offset)
+    offset = offset * h/4; // h/4 = 25 (max offset)
     windVertices.get(i).acivityOffset = offset;
   }
   

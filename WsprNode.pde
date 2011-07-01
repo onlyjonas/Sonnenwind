@@ -1,12 +1,16 @@
 class WsprNode{
     
     PVector pos;
-    float[] energy = new float[10];
+    float[] energy = new float[99];
     float newEnergy;
     float currentEnergy;
+    float minSize=10;
+    float maxSize=200;
     color myColor;
     String name; 
     private int history;
+    
+    //TODO Jonas: array energy umwandeln zu object arrayList & die energy history Kreise ausfaden... 
     
     WsprNode(World world, String _name, float _azimuth, float _distance, float _energy)
     {
@@ -17,7 +21,6 @@ class WsprNode{
       history = 0;
       
       currentEnergy = 0;
-      newEnergy= 0;
     }
     
     void update(float _azimuth, float _distance, float _energy)
@@ -62,18 +65,18 @@ class WsprNode{
     {
       pushMatrix();
         translate(pos.x,pos.y);
-        noStroke();
-        fill(myColor, 30);
+ 
+        // Spot history
+        noFill();
+        stroke(myColor);
         for(int i=0; i< energy.length-1 ; i++){
-          if(energy[i]>0)ellipse(0,0, 10+energy[i]*100, 10+energy[i]*100);
+          if(energy[i]>0)ellipse(0,0, minSize+energy[i]*maxSize, minSize+energy[i]*maxSize);
         }
         
-        fill(myColor, 50*currentEnergy);
-        stroke(myColor, 255*currentEnergy);
+        fill(0,255,0, 255*currentEnergy);
         currentEnergy += ((newEnergy - currentEnergy) * 0.1);
         ellipse(0,0, 10+currentEnergy*100, 10+currentEnergy*100);
         
-        if(currentEnergy >= newEnergy -0.01) newEnergy=0;
       popMatrix();
     }   
 
@@ -88,18 +91,18 @@ class WsprNode{
     }
     
     float getEnergy(){
-      float e=0; 
-      int count=0;
-      // TODO Jonas: nur von den letzten 3...
-      for(int i=0; i< energy.length-1 ; i++){
-        if (energy[i] != 0){
-          e += energy[i];
-          count++;
-        }  
-      }
-      
-      if(count > 0) e = e/count;
-      return e; 
+//      float e=0; 
+//      int count=0;
+//      // TODO Jonas: nur von den letzten 3...
+//      for(int i=0; i< energy.length-1 ; i++){
+//        if (energy[i] != 0){
+//          e += energy[i];
+//          count++;
+//        }  
+//      }
+//      
+//      if(count > 0) e = e/count;
+      return newEnergy; 
     }
     
     float getSize(){
