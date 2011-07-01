@@ -1,5 +1,6 @@
 import processing.opengl.*;
 
+SerialController serialController;
 World world;
 Webcam webcam;
 int screenW; 
@@ -11,8 +12,10 @@ void setup() {
   size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
   frameRate(24);
   strokeWeight(1); 
-  background(0); 
-  myRotation = 0; 
+  background(0);
+  
+  serialController = new SerialController(this);
+  myRotation = 0;
   world = new World((600 * 8), 512, myRotation); // screenSize.x * 8 = camera FOV: ~45°
 //  webcam = new Webcam(this, 600, 450);
 
@@ -64,12 +67,12 @@ PVector sunPos = new PVector(800,15);
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
-      myRotation +=100;
-      world.setRotation(myRotation);
+      serialController.rotation +=100;
+      world.setRotation(serialController.getRotation());
     } 
     else if (keyCode == DOWN) {
-      myRotation -= 100;
-      world.setRotation(myRotation);
+      serialController.rotation -=100;
+      world.setRotation(serialController.getRotation());
     }   
     else if (keyCode == LEFT) {
       sunPos.x -= 10;
