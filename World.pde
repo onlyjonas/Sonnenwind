@@ -101,7 +101,7 @@ class World {
     float azimuth = random(360); // TEST VALUE
 
     // Distance
-    float distance = random(500); // TEST VALUE (maxDis: 500)
+    float distance = random(400); // TEST VALUE (maxDis: 400)
     // Energy
     float energy = random(1);
 
@@ -136,23 +136,6 @@ class World {
     sunviz.pos.y = _y;
   }
 
-
-  /*
-  void mapWsprNode(){
-   // http://wsprnet.org/olddb
-   wsprManager.getAllSpots();
-   ...
-   einen spot nehmen:
-   WSPRSpot s = blabla;
-   s.getAzimuth(); // winkel vom nordpol, float
-   s.getDistance();  // entfernung in km, int
-   s.getSpotCount(); // anzahl der sichtungen, int
-   s.getAge();  // alter der letzten sichtung, ms in long
-   s.getDate(); // datum der letzten sichtung, java.util.Date
-   s.getCallsing(); // name, string
-   s.getDecibel(); s.getSNR(); //usw... http://wsprnet.org/olddb
-   }
-   */
   void createWsprNodesFromWSPRManager() {
     println("create nodes!");
     // get all spots!
@@ -162,6 +145,7 @@ class World {
       addNodeFromSpot(s);
     }
   }
+  
   void addNodeFromSpot(WSPRSpot spot) {
     println("addind node from spot: "+spot);
 
@@ -174,7 +158,7 @@ class World {
     // Distance
     float distance = map(spot.getDistance(), 0, 20000, 400, 0); 
     // Energy
-    float energy = map(spot.getSNR(), -35, 20, 0, 1);//random(1);
+    float energy = map(spot.getSNR(), -35, 20, 0, 1);
 
     // check if node already exists
     int index = -1;

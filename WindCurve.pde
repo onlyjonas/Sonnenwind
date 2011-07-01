@@ -53,7 +53,7 @@ class WindCurve {
   
   void setNodeOffset(float nodeX, float energy) {  
     int i =floor(nodeX/fieldWidth) ;
-    float offset = energy * h/2 *-1;
+    float offset = energy * h/1.8 *-1;
     windVertices.get(i).nodeOffset = offset;
   }
 
