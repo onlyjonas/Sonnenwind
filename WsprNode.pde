@@ -38,9 +38,8 @@ class WsprNode{
     
     void setNodeParam(float _azimuth, float _distance, float _energy){
       // Position X, Y
-      float maxDis = 500; 
       float x = world.w/360 * _azimuth;
-      float y = world.h - (_distance *(world.h - world.horizon) / maxDis);
+      float y = _distance;
       pos = new PVector(x, y);  
       
       // Energy

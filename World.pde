@@ -159,14 +159,15 @@ class World {
   }
   void addNodeFromSpot(WSPRSpot spot) {
     println("addind node from spot: "+spot);
-        // Call Sign
-    String name = spot.getCallsign();//"ABCDE"+ (int)random(20); 
+    
+    // Call Sign
+    String name = spot.getCallsign();
 
     // Azimuth (winkel vom Nordpol)
-    float azimuth = spot.getAzimuth();//random(360); // TEST VALUE
+    float azimuth = spot.getAzimuth();
 
     // Distance
-    float distance = map(spot.getDistance(),0,20000,0,500);//random(500); // TEST VALUE (maxDis: 500)
+    float distance = map(spot.getDistance(),0,20000,400,0); 
     // Energy
     float energy = map(spot.getSNR(),-35,20,0,1);//random(1);
     

@@ -1,6 +1,13 @@
 TODO:
 
-[Â ] Fast OPENGL video capture
-[Â ] merge branches
-[ ] delete branch "sunwind" & add branch "develop"
-[Â ] add all TODOs
+Jonas:
+[ ] Fast OPENGL video capture
+[ ] SunViz: sunwind width//+135 - anders passt es nichtÊ
+[Ê]ÊWindCurve: pulse verbessern
+
+Lasse:
+[ ]Êadd Arduino-Class (Rotation-sensor)
+[Ê] SunViz: Geo-Position
+[Ê]ÊSunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
+[Ê] World: in China dann Geokoordinaten nutzen
+[Ê]
