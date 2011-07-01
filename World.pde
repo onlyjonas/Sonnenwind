@@ -65,7 +65,7 @@ class World {
     float target = map(_r,0,360,0,-w);
     println("target: "+target);
     x += ((target - x) * mySpeed);
-  }  
+  }
 
   void renderBorder()
   {
