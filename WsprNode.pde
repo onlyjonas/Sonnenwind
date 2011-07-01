@@ -1,5 +1,5 @@
 class WsprNode{
-  
+    
     PVector pos;
     float[] energy = new float[10];
     float newEnergy;
@@ -91,6 +91,7 @@ class WsprNode{
     float getEnergy(){
       float e=0; 
       int count=0;
+      // TODO Jonas: nur von den letzten 3...
       for(int i=0; i< energy.length-1 ; i++){
         if (energy[i] != 0){
           e += energy[i];

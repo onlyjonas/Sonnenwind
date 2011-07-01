@@ -55,7 +55,7 @@ class SunViz {
   {
     pos.x = map((float)sun.getAzimuth(), 0, 360, 0, world.w); // Muss Lasse noch kontrollieren
     pos.y = map((float)sun.getElevation(), 70, -70, world.horizon-100, world.horizon+100); 
-    println("sun: "+sun.getAzimuth()+", "+sun.getElevation());
+//    println("sun: "+sun.getAzimuth()+", "+sun.getElevation());
   }
 
   void setPos(float _x, float _y)
