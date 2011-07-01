@@ -10,6 +10,7 @@ class WsprNode{
     String name; 
     private int history;
     
+    
     //TODO Jonas: array energy umwandeln zu object arrayList & die energy history Kreise ausfaden... 
     
     WsprNode(World world, String _name, float _azimuth, float _distance, float _energy)
@@ -73,9 +74,9 @@ class WsprNode{
           if(energy[i]>0)ellipse(0,0, minSize+energy[i]*maxSize, minSize+energy[i]*maxSize);
         }
         
-        fill(0,255,0, 255*currentEnergy);
+        fill(0,255,0, 125);
         currentEnergy += ((newEnergy - currentEnergy) * 0.1);
-        ellipse(0,0, 10+currentEnergy*100, 10+currentEnergy*100);
+        ellipse(0,0, minSize+currentEnergy*maxSize, minSize+currentEnergy*maxSize);
         
       popMatrix();
     }   
