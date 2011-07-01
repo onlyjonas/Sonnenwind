@@ -67,11 +67,13 @@ PVector sunPos = new PVector(800,15);
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
-      serialController.rotation +=100;
+      serialController.rotation += 5;
+      if (serialController.rotation > 360) serialController.rotation = 360;
       world.setRotation(serialController.getRotation());
     } 
     else if (keyCode == DOWN) {
-      serialController.rotation -=100;
+      serialController.rotation -= 5;
+      if (serialController.rotation < 0) serialController.rotation = 0;
       world.setRotation(serialController.getRotation());
     }   
     else if (keyCode == LEFT) {
