@@ -10,3 +10,27 @@ Lasse:
 [Ê] SunViz: Geo-Position
 [Ê]ÊSunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [Ê] World: in China dann Geokoordinaten nutzen
+
+
+SWP:
+# Dome
+[ ] Platte/Befestigung (Fussstütze)
+[ ] Servo 
+[ ] Webcam
+[ ] Programmierung
+
+# Kiste
+[ ] Sensorbefestigung
+[ ] Kabelführung 
+[X] Kabel kaufen
+[ ] Folien-Rahmen [ ] Scheibe kaufen?
+[ ] Laptop fixieren
+[ ] Temperatur / Ventilatoren
+[ ] Lautsprecher montieren
+[ ] Transportkiste Kabellöcher 
+[ ] Transporttasche kaufen
+
+# Baumarkt
+[ ] Imbus (M5) und Schraubenschlüssel (M10)
+[ ] Schraubenzieher schlitz
+[ ] Hängeschloss 45-15?

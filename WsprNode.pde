@@ -10,6 +10,10 @@ class WsprNode{
     String name; 
     private int history;
     
+//    ArrayList<Float> energyList = new ArrayList();
+//    Float f = new Float(36);
+//    energyList.add(f);
+//    print(energyList.get(0));
     
     //TODO Jonas: array energy umwandeln zu object arrayList & die energy history Kreise ausfaden... 
     
