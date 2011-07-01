@@ -10,3 +10,4 @@ Lasse:
 [Ê] SunViz: Geo-Position
 [Ê]ÊSunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [Ê] World: in China dann Geokoordinaten nutzen
+[ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
