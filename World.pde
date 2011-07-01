@@ -60,6 +60,10 @@ class World {
 
   void rotateTo(float _r)
   {
+    // TODO 360 map to
+    println("-r: "+_r);
+    float target = map(_r,0,360,0,w);
+    println("target: "+target);
     x += ((_r - x) * mySpeed);
   }  
 
@@ -75,7 +79,7 @@ class World {
 
   void setRotation(float _r)
   {
-    r=_r;
+    r=_r; 
   }
 
   void addAtractor() {
