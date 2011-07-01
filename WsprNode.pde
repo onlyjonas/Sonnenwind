@@ -6,7 +6,7 @@ class WsprNode{
     float currentEnergy;
     float minSize=10;
     float maxSize=200;
-    color myColor;
+    color strokeColor;
     String name; 
     private int history;
     
@@ -18,7 +18,7 @@ class WsprNode{
       name = _name;
       setNodeParam(_azimuth, _distance, _energy);
       
-      myColor = color(255,255,255);      
+      strokeColor = color(255,255,255);      
       history = 0;
       
       currentEnergy = 0;
@@ -69,7 +69,7 @@ class WsprNode{
  
         // Spot history
         noFill();
-        stroke(myColor);
+        stroke(strokeColor);
         for(int i=0; i< energy.length-1 ; i++){
           if(energy[i]>0)ellipse(0,0, minSize+energy[i]*maxSize, minSize+energy[i]*maxSize);
         }
@@ -83,12 +83,11 @@ class WsprNode{
 
     
     void drawname(String name){
-      fill(myColor);
+      stroke(strokeColor);
+      line(pos.x, pos.y, pos.x, world.h);      
+      fill(strokeColor);
+      textAlign(CENTER);
       text(name, (int)pos.x, (int)pos.y);
-    }
-    
-    void setColor(int r, int g, int b){
-      myColor = color(r,g,b);
     }
     
     float getEnergy(){

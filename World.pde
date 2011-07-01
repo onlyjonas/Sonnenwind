@@ -62,9 +62,9 @@ class World {
   void rotateTo(float _r)
   {
     // TODO 360 map to
-//    println("-r: "+_r);
-    float target = map(_r,0,360,0,-w);
-//    println("target: "+target);
+    //    println("-r: "+_r);
+    float target = map(_r, 0, 360, 0, -w);
+    //    println("target: "+target);
     x += ((target - x) * mySpeed);
   }
 
@@ -80,7 +80,7 @@ class World {
 
   void setRotation(float _r)
   {
-    r=_r; 
+    r=_r;
   }
 
   void addAtractor() {
@@ -164,7 +164,7 @@ class World {
   }
   void addNodeFromSpot(WSPRSpot spot) {
     println("addind node from spot: "+spot);
-    
+
     // Call Sign
     String name = spot.getCallsign();
 
@@ -172,10 +172,10 @@ class World {
     float azimuth = spot.getAzimuth();
 
     // Distance
-    float distance = map(spot.getDistance(),0,20000,400,0); 
+    float distance = map(spot.getDistance(), 0, 20000, 400, 0); 
     // Energy
-    float energy = map(spot.getSNR(),-35,20,0,1);//random(1);
-    
+    float energy = map(spot.getSNR(), -35, 20, 0, 1);//random(1);
+
     // check if node already exists
     int index = -1;
     for (int i=0; i < nodes.size(); i++) {
