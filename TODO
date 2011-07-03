@@ -13,11 +13,13 @@ Lasse:
 [ ] World: in China dann Geokoordinaten nutzen
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
 [ ] estimateSolarActivity: in welchem range? 
+[ ] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
 [ ] Energiesparmodus deaktivieren
 [ ] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren
+[X] ASUS-Update deaktivieren
 [ ] Remote-Desktop?
 [ ] Autostart von Processing-Programm
 [ ] Autostart von WSPRNET Software
