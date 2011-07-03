@@ -76,7 +76,7 @@ class SunViz {
   void setFieldActivity(int i, float activity) {
     sunwind.setFieldActivity(i, activity);
   }
-
+  
   void updateNodeEnergy() {
     for (int i=0;i<world.nodes.size();i++) {
       float nodeX = world.nodes.get(i).pos.x;

@@ -91,7 +91,7 @@ void keyPressed() {
     
     else if (keyCode == ALT) {
       //world.addAtractor();
-      world.setSunFieldActivity();
+      world.setSunFieldActivityFromWSPRNET();
     }
   } else {
     if (key == 'c') {

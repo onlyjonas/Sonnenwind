@@ -129,6 +129,16 @@ class World {
 
   void setSunFieldActivity() {
     sunviz.setFieldActivity((int)random(sunviz.activityFields-1), random(1));
+//    sunviz.setFieldActivityFromWSPRNET(wspr.getWSPRData());
+  }
+  
+  void setSunFieldActivityFromWSPRNET() {
+    float step = w/sunviz.sunwind.detail;
+    for (int i=0; i < sunviz.sunwind.detail; i++) {
+      float angle = step*i/(float)w*360.0;
+      float activity = wspr.getWSPRData().estimateSolarActivity((int)angle);
+      sunviz.setFieldActivity((int)random(sunviz.activityFields-1), activity);
+    }
   }
 
   void setSunPos(float _x, float _y) {
