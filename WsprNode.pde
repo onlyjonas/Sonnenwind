@@ -59,7 +59,7 @@ class WsprNode{
         
         for(int i=0; i< spotCount-1; i++){
           float e = energyList.get(i);
-          int strokeAlpha = 100+(155/spotCount*i);
+          int strokeAlpha = 55+(200/spotCount*i);
           stroke(strokeColor, strokeAlpha);
           ellipse(0,0, minSize+e*maxSize, minSize+e*maxSize);
         }
@@ -90,11 +90,10 @@ class WsprNode{
 
       for(int i=1; i< iMax ; i++){
           e += energyList.get(energyList.size()-i);
-          print(e+ " + ");
       }
-      print(" = " +e);
-      e = e/(iMax-1);
-      println("e/iMax = " +e);
+
+      if(e>0)e = e/(iMax-1);
+
       return e; 
     }
     

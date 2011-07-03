@@ -53,7 +53,7 @@ class WindCurve {
   
   void setNodeOffset(float nodeX, float energy) {  
     int i =floor(nodeX/fieldWidth) ;
-    float offset = energy * h/1.8 *-1;
+    float offset = energy * h/1.4 *-1;
     windVertices.get(i).nodeOffset = offset;
   }
 
@@ -85,6 +85,7 @@ class WindCurve {
         target.x = startPos.x;  
         target.y = startPos.y + acivityOffset + nodeOffset + pulseOffset;
       }
+      // FEHLER in nodeOffset 
 
       // pulse / wind effect
       if (millis() - starttime > interval + random(100*index)) {
