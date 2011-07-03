@@ -12,6 +12,15 @@ Lasse:
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [ ] World: in China dann Geokoordinaten nutzen
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
+[ ] estimateSolarActivity: in welchem range? 
+
+Rechner-Setup
+[ ] Windows-Update deaktivieren
+[ ] Energiesparmodus deaktivieren
+[ ] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren
+[ ] Remote-Desktop?
+[ ] Autostart von Processing-Programm
+[ ] Autostart von WSPRNET Software
 
 SWP:
 # Dome
@@ -19,6 +28,8 @@ SWP:
 [ ] Servo 
 [ ] Webcam
 [ ] Programmierung
+# WSPRNET
+[ ] Funkempfänger anschließen
 
 # Kiste
 [ ] Sensorbefestigung
@@ -35,4 +46,4 @@ SWP:
 [ ] Imbus (M5) und Schraubenschlüssel (M10)
 [ ] Schraubenzieher schlitz
 [ ] Hängeschloss 45-15?
-
+[ ] Wasserwaage
