@@ -6,6 +6,9 @@ class SunWind {
   float strength=20.0;
   float[] fieldActivity; // 0 = no activity | 1 = full activity
   ArrayList<WindCurve> windCurves = new ArrayList();
+  
+  float maxActivity;
+  float minActivity;
 
   SunWind(float _windY, float _width, float _height ,int _detail) {
 
@@ -20,6 +23,9 @@ class SunWind {
       WindCurve wind = new WindCurve(start.x, start.y, end.x, end.y, _height, detail);  
       windCurves.add(wind);
     }
+    
+    maxActivity = 0;
+    minActivity = 1;
   }
 
   void render() {
@@ -40,7 +46,11 @@ class SunWind {
   }
 
   void setFieldActivity(int index, float activity) {
+    if (activity > maxActivity) maxActivity = activity;
+    if (activity < minActivity) minActivity = activity;
+    activity = map(activity, minActivity, maxActivity, 0, 1);
     fieldActivity[index] = activity;
+    println(index+" is active "+fieldActivity[index]+" max "+maxActivity+", min "+minActivity);
     for (int i = 0;i < windCurves.size(); i++) {
       windCurves.get(i).setActivityOffset(index, activity*i);
     }
