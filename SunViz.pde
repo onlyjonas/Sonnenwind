@@ -33,6 +33,10 @@ class SunViz {
     updateSunPos();
     drawSun();
     drawWind();
+
+    // hide everything beneath the horizon
+    fill (0);
+    rect(0, world.horizon, world.w, world.h-world.horizon);
   }
 
   private void drawSun()
@@ -55,7 +59,7 @@ class SunViz {
   {
     pos.x = map((float)sun.getAzimuth(), 0, 360, 0, world.w); // Muss Lasse noch kontrollieren
     pos.y = map((float)sun.getElevation(), 70, -70, world.horizon-200, world.horizon+200); 
-//    println("sun: "+sun.getAzimuth()+", "+sun.getElevation());
+    //    println("sun: "+sun.getAzimuth()+", "+sun.getElevation());
   }
 
   void setPos(float _x, float _y)

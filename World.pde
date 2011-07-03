@@ -47,14 +47,14 @@ class World {
     stroke(150);
     line(0, horizon, w, horizon);
 
+    // sun
+    sunviz.render();
+
     // nodes
     for (int i = 0;i < nodes.size(); i++) {
       WsprNode node = nodes.get(i);
       node.render();
     }
-
-    // sun
-    sunviz.render();
 
     popMatrix();
   }
