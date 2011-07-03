@@ -7,13 +7,13 @@ Jonas:
 [ ] Sonnenaufgang/untergang checken
 
 Lasse:
-[ ] add Arduino-Class (Rotation-sensor)
+[X] add Arduino-Class (Rotation-sensor)
 [ ] SunViz: Geo-Position
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [ ] World: in China dann Geokoordinaten nutzen
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
-[ ] estimateSolarActivity: in welchem range? 
-[ ] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
+[ ] estimateSolarActivity: in welchem range?
+[X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren

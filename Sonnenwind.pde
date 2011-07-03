@@ -1,6 +1,7 @@
 import processing.opengl.*;
 
 SerialController serialController;
+RotationCorrection rotCorrect;
 World world;
 Webcam webcam;
 int screenW; 
@@ -11,7 +12,7 @@ float myRotation;
 void setup() {
   size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
   frameRate(24);
-  strokeWeight(1); 
+  strokeWeight(1);
   background(0);
   
   myRotation = 0;
@@ -22,6 +23,8 @@ void setup() {
   font = loadFont("Gulim-11.vlw");
   textFont(font, 11);
   
+  rotCorrect = new RotationCorrection();
+  rotCorrect.loadNorth();
   serialController = new SerialController(this);
 }
 
@@ -29,7 +32,8 @@ void setup() {
 void draw() {
 
   serialController.readSerial();
-  world.setRotation(serialController.getRotation());
+  float rotationFromNorth = rotCorrect.normalizeRotation(serialController.getRotation());
+  world.setRotation(rotationFromNorth);
   
   // drawmode: 0 = present / 1 = debug  
   int drawmode = 1;
@@ -71,14 +75,10 @@ PVector sunPos = new PVector(800,15);
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
-      serialController.rotation += 50;
-      if (serialController.rotation > 360) serialController.rotation = 360;
-      world.setRotation(serialController.getRotation());
+      serialController.rotation += 5;
     } 
     else if (keyCode == DOWN) {
-      serialController.rotation -= 50;
-      if (serialController.rotation < 0) serialController.rotation = 0;
-      world.setRotation(serialController.getRotation());
+      serialController.rotation -= 5;
     }   
     else if (keyCode == LEFT) {
       sunPos.x -= 10;
@@ -93,6 +93,9 @@ void keyPressed() {
       //world.addAtractor();
       world.setSunFieldActivity();
     }
+  } else {
+    if (key == 'c') {
+      rotCorrect.calibrateNorth(serialController.getRotation());
+    }
   }
 }
-
