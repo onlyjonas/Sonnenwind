@@ -14,7 +14,6 @@ void setup() {
   strokeWeight(1); 
   background(0);
   
-  serialController = new SerialController(this);
   myRotation = 0;
   world = new World((600 * 8), 512, myRotation); // screenSize.x * 8 = camera FOV: ~45°
 //  webcam = new Webcam(this, 600, 450);
@@ -22,11 +21,16 @@ void setup() {
   PFont font;
   font = loadFont("Gulim-11.vlw");
   textFont(font, 11);
+  
+  serialController = new SerialController(this);
 }
 
 
 void draw() {
 
+  serialController.readSerial();
+  world.setRotation(serialController.getRotation());
+  
   // drawmode: 0 = present / 1 = debug  
   int drawmode = 1;
 
