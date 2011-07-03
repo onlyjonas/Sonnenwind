@@ -1,0 +1,51 @@
+TODO:
+
+Jonas:
+[ ] Fast OPENGL video capture
+[ ] SunViz: sunwind width//+135 - anders passt es nichtÊ
+[ ] WindCurve: pulse verbessern
+[ ] Sonnenaufgang/untergang checken
+
+Lasse:
+[ ] add Arduino-Class (Rotation-sensor)
+[ ] SunViz: Geo-Position
+[ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
+[ ] World: in China dann Geokoordinaten nutzen
+[ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
+[ ] estimateSolarActivity: in welchem range? 
+[ ] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
+
+Rechner-Setup
+[ ] Windows-Update deaktivieren
+[ ] Energiesparmodus deaktivieren
+[ ] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren
+[X] ASUS-Update deaktivieren
+[ ] Remote-Desktop?
+[ ] Autostart von Processing-Programm
+[ ] Autostart von WSPRNET Software
+
+SWP:
+# Dome
+[ ] Platte/Befestigung (Fussstütze)
+[ ] Servo 
+[ ] Webcam
+[ ] Programmierung
+# WSPRNET
+[ ] Funkempfänger anschließen
+
+# Kiste
+[ ] Sensorbefestigung
+[ ] Kabelführung 
+[X] Kabel kaufen
+[ ] Folien-Rahmen [ ] Scheibe kaufen?
+[ ] Laptop fixieren
+[ ] Temperatur / Ventilatoren
+[ ] Lautsprecher montieren
+[ ] Transportkiste Kabellöcher 
+[ ] Transporttasche kaufen
+
+# Baumarkt
+[ ] Imbus (M5) und Schraubenschlüssel (M10)
+[ ] Schraubenzieher schlitz
+[ ] Hängeschloss 45-15?
+[ ] Wasserwaage

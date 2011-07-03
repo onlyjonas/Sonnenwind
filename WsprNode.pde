@@ -1,23 +1,21 @@
 class WsprNode{
-  
+    
     PVector pos;
-    float[] energy = new float[10];
-    float newEnergy;
+    ArrayList<Float> energyList = new ArrayList();
     float currentEnergy;
-    color myColor;
+    float minSize=10;
+    float maxSize=200;
+    color strokeColor;
     String name; 
-    private int history;
     
     WsprNode(World world, String _name, float _azimuth, float _distance, float _energy)
     {
       name = _name;
       setNodeParam(_azimuth, _distance, _energy);
       
-      myColor = color(255,255,255);      
-      history = 0;
+      strokeColor = color(255,255,255);      
       
       currentEnergy = 0;
-      newEnergy= 0;
     }
     
     void update(float _azimuth, float _distance, float _energy)
@@ -28,28 +26,19 @@ class WsprNode{
     void updateEnergy(float _energy)
     {
        // Energy
-      energy[history] = _energy;
-      newEnergy = _energy;
-      
-      // History
-      if(history<energy.length-1)history++;
-      else history = 0;
+      Float e = new Float(_energy);;
+      energyList.add(e);
     }
     
     void setNodeParam(float _azimuth, float _distance, float _energy){
       // Position X, Y
-      float maxDis = 500; 
       float x = world.w/360 * _azimuth;
-      float y = world.h - (_distance *(world.h - world.horizon) / maxDis);
+      float y = _distance;
       pos = new PVector(x, y);  
       
       // Energy
-      energy[history] = _energy;
-      newEnergy = _energy;
-      
-      // History
-      if(history<energy.length-1)history++;
-      else history = 0;
+      Float e = new Float(_energy);;
+      energyList.add(e);
       
     }
     
@@ -63,42 +52,53 @@ class WsprNode{
     {
       pushMatrix();
         translate(pos.x,pos.y);
-        noStroke();
-        fill(myColor, 30);
-        for(int i=0; i< energy.length-1 ; i++){
-          if(energy[i]>0)ellipse(0,0, 10+energy[i]*100, 10+energy[i]*100);
+ 
+        // spot history
+        noFill();
+        int spotCount = energyList.size();
+        
+        for(int i=0; i< spotCount-1; i++){
+          float e = energyList.get(i);
+          int strokeAlpha = 55+(200/spotCount*i);
+          stroke(strokeColor, strokeAlpha);
+          ellipse(0,0, minSize+e*maxSize, minSize+e*maxSize);
         }
         
-        fill(myColor, 50*currentEnergy);
-        stroke(myColor, 255*currentEnergy);
-        currentEnergy += ((newEnergy - currentEnergy) * 0.1);
-        ellipse(0,0, 10+currentEnergy*100, 10+currentEnergy*100);
+        // last spot
+        fill(0,255,0, 125);
+        currentEnergy += ((energyList.get(energyList.size()-1) - currentEnergy) * 0.1);
+        ellipse(0,0, minSize+currentEnergy*maxSize, minSize+currentEnergy*maxSize);
         
-        if(currentEnergy >= newEnergy -0.01) newEnergy=0;
       popMatrix();
     }   
 
     
     void drawname(String name){
-      fill(myColor);
+      stroke(strokeColor);
+      line(pos.x, pos.y, pos.x, world.h);      
+      fill(strokeColor);
+      textAlign(CENTER);
       text(name, (int)pos.x, (int)pos.y);
-    }
-    
-    void setColor(int r, int g, int b){
-      myColor = color(r,g,b);
     }
     
     float getEnergy(){
       float e=0; 
       int count=0;
-      for(int i=0; i< energy.length-1 ; i++){
-        if (energy[i] != 0){
-          e += energy[i];
-          count++;
-        }  
-      }
       
-      if(count > 0) e = e/count;
+      // Energiemittelwert von den letzten 3 Sichtungen
+      int iMax = constrain(energyList.size(), 0, 4);
+
+      for(int i=1; i< iMax ; i++){
+          e += energyList.get(energyList.size()-i);
+      }
+
+      if(e>0)e = e/(iMax-1);
+
       return e; 
+    }
+    
+    float getSize(){
+      float s = 10+getEnergy()*100;
+      return s;
     }
 }

@@ -1,15 +1,19 @@
+import swp.WSPRManager;
+
 class World {
 
+  long starttime;
+  long interval = 120000;
   int w;  
   int h;
   int x;
   float horizon;
   float r;
   float mySpeed;
+  WSPRManager wspr;
   ArrayList<WsprNode> nodes = new ArrayList();
+  SunViz sunviz;
 
-  Sun sun;
-  
   World(int _w, int _h, float _r)
   {
     w=_w;
@@ -18,12 +22,23 @@ class World {
     horizon = 100;
     x=0;
     mySpeed = 0.1;
-    
-    sun = new Sun(this, 1500, 15, 40);
+    // WICHIT, LASSE: in China dann Geokoordinaten nutzen!
+    // LongLat myGeoPos;
+    long twoMinutes = 60*2*1000;
+    int maxAge = 24; // maxAge ist das Alter, nach dem die Spots weggeschmissen werden in Stunden!
+    wspr = new WSPRManager("DH3JO", "JO30lw", twoMinutes, maxAge, true); // debug = true, macht jede menge ausgaben
+    sunviz = new SunViz(this, 900, 15);
+    // init node DB
+    starttime = millis()-interval;
   }
 
   void render()
   {
+    if (millis() - starttime > interval) {
+      createWsprNodesFromWSPRManager();
+      starttime = millis();
+      println("worldtimer: "+ starttime);
+    }
     rotateTo(r);
     pushMatrix();
     translate(x, 0);
@@ -32,22 +47,26 @@ class World {
     stroke(150);
     line(0, horizon, w, horizon);
 
+    // sun
+    sunviz.render();
+
     // nodes
     for (int i = 0;i < nodes.size(); i++) {
       WsprNode node = nodes.get(i);
       node.render();
     }
-    
-    // sun
-    sun.render();
-    
+
     popMatrix();
   }
 
   void rotateTo(float _r)
   {
-    x += ((_r - x) * mySpeed);
-  }  
+    // TODO 360 map to
+    //    println("-r: "+_r);
+    float target = map(_r, 0, 360, 0, -w);
+    //    println("target: "+target);
+    x += ((target - x) * mySpeed);
+  }
 
   void renderBorder()
   {
@@ -64,18 +83,28 @@ class World {
     r=_r;
   }
 
-  void addNode() {
+  void addAtractor() {
+
+    // Pos
+    float _x = random(w);
+    float _y = random(30, horizon-30);
+
+    // Energy (Size)
+    float _s = random(20, 80);
+  }
+
+  void addRandomNode() {
     // Call Sign
     String name = "ABCDE"+ (int)random(20); 
 
     // Azimuth (winkel vom Nordpol)
     float azimuth = random(360); // TEST VALUE
-    
+
     // Distance
-    float distance = random(500); // TEST VALUE (maxDis: 500)
+    float distance = random(400); // TEST VALUE (maxDis: 400)
     // Energy
     float energy = random(1);
-   
+
     // check if node already exists 
     int index = -1;
     for (int i=0; i < nodes.size(); i++) {
@@ -95,23 +124,62 @@ class World {
       // NEW NODE
       WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
       nodes.add(node);
-    } 
-  }  
-  /*
-  void mapWsprNode(){
-   // http://wsprnet.org/olddb
-   wsprManager.getAllSpots();
-   ...
-   einen spot nehmen:
-   WSPRSpot s = blabla;
-   s.getAzimuth(); // winkel vom nordpol, float
-   s.getDistance();  // entfernung in km, int
-   s.getSpotCount(); // anzahl der sichtungen, int
-   s.getAge();  // alter der letzten sichtung, ms in long
-   s.getDate(); // datum der letzten sichtung, java.util.Date
-   s.getCallsing(); // name, string
-   s.getDecibel(); s.getSNR(); //usw... http://wsprnet.org/olddb
-   }
-   */
+    }
+  } 
+
+  void setSunFieldActivity() {
+    sunviz.setFieldActivity((int)random(sunviz.activityFields-1), random(1));
+  }
+
+  void setSunPos(float _x, float _y) {
+    sunviz.pos.x = _x;
+    sunviz.pos.y = _y;
+  }
+
+  void createWsprNodesFromWSPRManager() {
+    println("create nodes!");
+    // get all spots!
+    WSPRSpot[] allSpots = wspr.getWSPRData().getSpotArray();
+    for (int i=0; i<allSpots.length; i++) {
+      WSPRSpot s = allSpots[i];
+      addNodeFromSpot(s);
+    }
+  }
+  
+  void addNodeFromSpot(WSPRSpot spot) {
+    println("addind node from spot: "+spot);
+
+    // Call Sign
+    String name = spot.getCallsign();
+
+    // Azimuth (winkel vom Nordpol)
+    float azimuth = spot.getAzimuth();
+
+    // Distance
+    float distance = map(spot.getDistance(), 0, 20000, 400, 0); 
+    // Energy
+    float energy = map(spot.getSNR(), -35, 20, 0, 1);
+
+    // check if node already exists
+    int index = -1;
+    for (int i=0; i < nodes.size(); i++) {
+      if (nodes.get(i).name.equals(name)) {
+        println("same name: "+ name);
+        index = i;
+        break;
+      }
+    }
+    if (index >= 0) {
+      // NODE ALREADY EXISTS
+      //nodes.get(index).update(azimuth, distance, energy);
+      nodes.get(index).updateEnergy(energy);
+    }    
+    else {
+      // NEW NODE
+      WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
+      nodes.add(node);
+      println("added new node: "+node);
+    }
+  }
 }
 
