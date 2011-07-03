@@ -85,7 +85,6 @@ class WindCurve {
         target.x = startPos.x;  
         target.y = startPos.y + acivityOffset + nodeOffset + pulseOffset;
       }
-      // FEHLER in nodeOffset 
 
       // pulse / wind effect
       if (millis() - starttime > interval + random(100*index)) {
