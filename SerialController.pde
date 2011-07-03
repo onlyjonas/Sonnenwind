@@ -2,22 +2,24 @@ import processing.serial.*;
 
 class SerialController {
   String buff = "";
-  int rotation = 0;
+  float rotation = 0;
   Serial port;
+  boolean serialDebug = false;
 
   public SerialController(PApplet parent) {
     try {
-      port = new Serial(parent, Serial.list()[1], 9600);
+      port = new Serial(parent, Serial.list()[0], 9600);
       println("Serial line connected.");
     } 
     catch (Exception e) {
       port = null;
       println("No serial connection. Use Keyboard UP/DOWN to move");
     }
-    buff = new StringBuffer();
+    buff = "";
   }
 
-  void readSerial() { 
+  void readSerial() {
+    if (port==null) return;
     while (port.available () > 0) {
       int in = port.read();
       if (in==10) {
@@ -31,9 +33,9 @@ class SerialController {
 
   void parseData() {
     try {
-      print("trying "+buff+" resulting in ");
+      if (serialDebug) print("trying to parse "+buff+" resulting in ");
       rotation = Integer.parseInt(buff.substring(0, buff.length()-1))/10.0;
-      println("got: "+rotation);
+      if (serialDebug) println("got: "+rotation);
       // Clear the value of "buff"
       buff = "";
     } 
@@ -44,7 +46,7 @@ class SerialController {
     }
   } 
   float getRotation() {
-    return rotation/10.0;
+    return rotation;
   }
 }
 
