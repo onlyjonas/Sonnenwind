@@ -12,7 +12,7 @@ Lasse:
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [ ] World: in China dann Geokoordinaten nutzen
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
-[ ] estimateSolarActivity: in welchem range?
+[X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 
 Rechner-Setup
