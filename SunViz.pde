@@ -41,11 +41,13 @@ class SunViz {
 
   private void drawSun()
   {
+    float s = mySize;
+    if(pos.y<world.horizon) s = mySize + dist(pos.x,pos.y, pos.x, world.horizon); 
     stroke(myColor);
-    line(pos.x-mySize/2+2, pos.y-mySize/2+2, pos.x+mySize/2-2, pos.y+mySize/2-2);
-    line(pos.x-mySize/2+2, pos.y+mySize/2-2, pos.x+mySize/2-2, pos.y-mySize/2+2);
-    line(pos.x-mySize/2, pos.y, pos.x+mySize/2, pos.y);
-    line(pos.x, pos.y-mySize/2, pos.x, pos.y+mySize/2);
+    line(pos.x-s/3, pos.y-s/3, pos.x+s/3, pos.y+s/3);
+    line(pos.x-s/3, pos.y+s/3, pos.x+s/3, pos.y-s/3);
+    line(pos.x-s/2, pos.y, pos.x+s/2, pos.y);
+    line(pos.x, pos.y-s/2, pos.x, pos.y+s/2);
   }
 
   private void drawWind()
