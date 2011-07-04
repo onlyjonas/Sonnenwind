@@ -5,8 +5,8 @@ Jonas:
 [ ] SunViz: sunwind width//+135 - anders passt es nicht 
 [X] WindCurve: pulse verbessern
 [†]†Sonnenaufgang/untergang checken
-[ ] Text spiegeln
-[†]†alles 180∞ drehen†
+[X] Text spiegeln
+[X]†alles 180∞ drehen†
 
 Lasse:
 [X] add Arduino-Class (Rotation-sensor)
