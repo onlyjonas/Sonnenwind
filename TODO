@@ -32,6 +32,7 @@ SWP:
 [ ] Servo 
 [ ] Webcam
 [ ] Programmierung
+
 # WSPRNET
 [ ] Funkempfänger anschließen
 
@@ -47,7 +48,9 @@ SWP:
 [ ] Transporttasche kaufen
 
 # Baumarkt
-[ ] Imbus (M5) und Schraubenschlüssel (M10)
-[ ] Schraubenzieher schlitz
-[ ] Hängeschloss 45-15?
-[ ] Wasserwaage
+[X] Imbus (M5) und Schraubenschlüssel (M10)
+[X] Schraubenzieher schlitz
+[X] Hängeschloss 45-15?
+[X] Wasserwaage
+[ ] Gummiflansch
+[ ] Fussstütze  

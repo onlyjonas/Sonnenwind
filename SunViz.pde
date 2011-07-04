@@ -35,8 +35,8 @@ class SunViz {
     drawWind();
 
     // hide everything beneath the horizon
-    fill (0);
-    rect(0, world.horizon, world.w, world.h-world.horizon);
+//    fill (0, 150);
+//    rect(0, world.horizon, world.w, world.h-world.horizon);
   }
 
   private void drawSun()
