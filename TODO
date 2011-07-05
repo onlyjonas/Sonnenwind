@@ -47,6 +47,8 @@ SWP:
 
 # Kiste
 [X] Sensorbefestigung
+[ ] Sensor: Widerstände etc. dranlassen?
+[ ] Ventilator Dioden oder was?
 [ ] Kabelführung (Schrumpfschlauch)
 [X] Kabel kaufen
 [ ] Arduino an Stativ befestigen (2 Platten lasern, m 5)
