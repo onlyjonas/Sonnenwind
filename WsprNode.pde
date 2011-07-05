@@ -74,11 +74,18 @@ class WsprNode{
 
     
     void drawname(String name){
+      // PosX Line
       stroke(strokeColor);
       line(pos.x, pos.y, pos.x, world.h);      
+      // Text mirrored
       fill(strokeColor);
       textAlign(CENTER);
-      text(name, (int)pos.x, (int)pos.y);
+      pushMatrix();  
+      scale(1, -1);
+      translate(pos.x,-pos.y);
+      rotate(radians(180));
+      text(name, 0, 0);
+      popMatrix();
     }
     
     float getEnergy(){

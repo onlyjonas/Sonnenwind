@@ -5,8 +5,8 @@ Jonas:
 [ ] SunViz: sunwind width//+135 - anders passt es nichtÊ
 [X] WindCurve: pulse verbessern
 [ ] Sonnenaufgang/untergang checken
-[ ] Text spiegeln
-[ ] alles 180° drehen 
+[X] Text spiegeln
+[X] alles 180° drehen 
 
 Lasse:
 [X] add Arduino-Class (Rotation-sensor)
@@ -33,6 +33,7 @@ SWP:
     Alternative: Dings Lasern!
 [ ] Webcam
 [ ] Programmierung
+
 # WSPRNET
 [ ] Funkempfänger anschließen
 # draußen
@@ -51,7 +52,9 @@ SWP:
 [ ] Transporttasche kaufen
 
 # Baumarkt
-[ ] Imbus (M5) und Schraubenschlüssel (M10)
-[ ] Schraubenzieher schlitz
-[ ] Hängeschloss 45-15?
-[ ] Wasserwaage
+[X] Imbus (M5) und Schraubenschlüssel (M10)
+[X] Schraubenzieher schlitz
+[X] Hängeschloss 45-15?
+[X] Wasserwaage
+[ ] Gummiflansch
+[ ] Fussstütze  

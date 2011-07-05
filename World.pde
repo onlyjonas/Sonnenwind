@@ -7,7 +7,7 @@ class World {
   int w;  
   int h;
   int x;
-  float horizon;
+  float horizon = 200;
   float r;
   float mySpeed;
   WSPRManager wspr;
@@ -19,7 +19,6 @@ class World {
     w=_w;
     h=_h;
     r=_r;
-    horizon = 100;
     x=0;
     mySpeed = 0.1;
     // WICHIT, LASSE: in China dann Geokoordinaten nutzen!
@@ -42,10 +41,6 @@ class World {
     rotateTo(r);
     pushMatrix();
     translate(x, 0);
-
-    // horizon
-    stroke(150);
-    line(0, horizon, w, horizon);
 
     // sun
     sunviz.render();
@@ -76,6 +71,11 @@ class World {
     stroke(0, 255, 0);
     rect(0, 0, w, h);
     popMatrix();
+  }
+  
+  void renderHorizon(){
+    stroke(150);
+    line(0, horizon, w, horizon);  
   }
 
   void setRotation(float _r)
