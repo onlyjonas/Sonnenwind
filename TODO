@@ -17,6 +17,7 @@ Lasse:
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 [ ] estimateSolarActivity: think again!
+[ ] Serial: Werte unter 0 abfangen!
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
@@ -29,28 +30,33 @@ Rechner-Setup
 
 SWP:
 # Dome
-[ ] Platte/Befestigung (Fussstütze)
-[ ] Servo (Wenn Servo dann den Nordpol der Kiste als 0 Grad kalibrieren, Problem: Jitter)
-    Alternative: Dings Lasern!
-[ ] Webcam
-[ ] Programmierung
+[X] Platte/Befestigung (Fussstütze)
+[ ] Servo, Arduino & Hub Befestigung/Platte lasern
+[ ] Webcam befestigen (2 Komponentenkleber auf Servo)
+[ ] Zweiter Arduino anschließen/programmieren
+[ ] Dome an Wand/Säule, whatever befestigen (Bernd?)
+[X] USB-Kabel Kamera
+[X] Kabel Servo 20 m
 
 # WSPRNET
 [ ] Funkempfänger anschließen
 
-# Draußen
+# Antenne
 [ ] Befestigung Antenne
-[ ] Befestigung Kamera
+[ ] BNC-Stecker ans Kabel
 
 # Kiste
-[ ] Sensorbefestigung
-[ ] Kabelführung 
+[X] Sensorbefestigung
+[ ] Kabelführung (Schrumpfschlauch)
 [X] Kabel kaufen
-[ ] Folien-Rahmen [ ] Scheibe kaufen?
+[ ] Arduino an Stativ befestigen (2 Platten lasern, m 5)
+[ ] Folien-Rahmen
 [ ] Laptop fixieren
 [X] Temperatur / Ventilatoren
-[ ] Lautsprecher montieren
-[ ] Transportkiste Kabellöcher 
+[X] Lautsprecher montieren
+[ ] Lautsprecher anlöten
+[ ] Stromversorgung Ventilatoren
+[X] Transportkiste Kabellöcher 
 [ ] Transporttasche kaufen
 
 # Baumarkt
@@ -60,3 +66,13 @@ SWP:
 [X] Wasserwaage
 [X] Gummiflansch
 [X] Fussstütze  
+
+# Mitnehmen
+[ ] Lötkolben/Lötzinn
+[ ] Gaffa
+[ ] Ohrenstöpsel
+
+# öA
+
+[ ] Pressetext
+[ ] Blog aktualisieren

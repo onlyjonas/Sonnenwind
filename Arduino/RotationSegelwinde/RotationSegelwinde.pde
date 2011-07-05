@@ -1,10 +1,5 @@
 /* 
- * Hype IQ730 Segel Servo
- * 0 grad = 1,05ms
- * 360 grad = 1,35ms
- * 580 grad = 1,5ms
- * 720 grad = 1,66ms
- * 1080 grad = 1,93ms
+ * Segelwinde
  *
  * PLUS:
  *
@@ -12,11 +7,18 @@
  * KHM 2010 /  Martin Nawrath
  * Kunsthochschule fuer Medien Koeln
  * Academy of Media Arts Cologne
+ 
+ Calibration
+ - end-to-end is ~202 to ~298
+ - north = 298 - 30 = 268?
  */
 // import sensor aktor library for pin mapping
 #include <SensorAktor.h>
 #include "Metro.h"     //Include Metro library
 #include "MLX90316.h"  // Include MLX90316 library
+
+// calibration
+int north = 298;
 
 // setup sensor
 int pinSS = 5;
@@ -37,21 +39,22 @@ void setup(){
 
 void loop(){
   if (mlxMetro.check() == 1) {
-    ii = mlx_1.readAngle();
+    int sens = mlx_1.readAngle();
+    Serial.print(sens);
+    Serial.println();
+    if (sens>=0) ii = sens/10 - north;
+    while (ii<0) ii+=360;
 //    Serial.print(ii);
 //    Serial.println("");
   }
   delay(3);
-  a1 = ii/10;  // set servo angle from rot. sensor
+  a1 = ii;  // set servo angle from rot. sensor
   if (v1 < a1 ) v1++;
   if (v1 > a1 ) v1--;
-  //Serial.println(v1);
   if ( v1-v1a == 0) {
-    Serial.print("going to: ");
-    Serial.println(v1);
     Servo360(v1);
-    v1a=v1;
   }
+  v1a=v1;
 }
 //**************************************************+
 void Servo360(int deg) {
@@ -61,8 +64,9 @@ void Servo360(int deg) {
   long pls;
   if (deg > 359) deg = 359;  // Winkelbegrenzung .. 359 Grad
   deg = 359-deg;
-
-  pls = deg * 85; // Pulsbreite skalieren 0,85 us = 1 Grad
+  
+  pls = deg * 63; // Pulsbreite skalieren 0,63 us = 1 Grad
+//  pls = deg * 85; // Pulsbreite skalieren 0,85 us = 1 Grad
   pls = pls / 100;
   pls = pls + 1500; // Servo Mittelstellung
 
