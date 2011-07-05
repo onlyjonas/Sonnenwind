@@ -16,6 +16,7 @@ Lasse:
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
+[ ] estimateSolarActivity: think again!
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
@@ -36,7 +37,8 @@ SWP:
 
 # WSPRNET
 [ ] Funkempfänger anschließen
-# draußen
+
+# Draußen
 [ ] Befestigung Antenne
 [ ] Befestigung Kamera
 
@@ -46,7 +48,7 @@ SWP:
 [X] Kabel kaufen
 [ ] Folien-Rahmen [ ] Scheibe kaufen?
 [ ] Laptop fixieren
-[ ] Temperatur / Ventilatoren
+[X] Temperatur / Ventilatoren
 [ ] Lautsprecher montieren
 [ ] Transportkiste Kabellöcher 
 [ ] Transporttasche kaufen
@@ -56,5 +58,5 @@ SWP:
 [X] Schraubenzieher schlitz
 [X] Hängeschloss 45-15?
 [X] Wasserwaage
-[ ] Gummiflansch
-[ ] Fussstütze  
+[X] Gummiflansch
+[X] Fussstütze  
