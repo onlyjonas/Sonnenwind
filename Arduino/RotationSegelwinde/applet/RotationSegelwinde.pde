@@ -38,18 +38,20 @@ void setup(){
 void loop(){
   if (mlxMetro.check() == 1) {
     ii = mlx_1.readAngle();
-    Serial.print(ii);
-    Serial.println("");
+//    Serial.print(ii);
+//    Serial.println("");
   }
-  delay(4);
+  delay(3);
   a1 = ii/10;  // set servo angle from rot. sensor
-
   if (v1 < a1 ) v1++;
   if (v1 > a1 ) v1--;
-
   //Serial.println(v1);
-  if ( v1-v1a == 0) Servo360(v1);
-  v1a=v1;
+  if ( v1-v1a == 0) {
+    Serial.print("going to: ");
+    Serial.println(v1);
+    Servo360(v1);
+    v1a=v1;
+  }
 }
 //**************************************************+
 void Servo360(int deg) {

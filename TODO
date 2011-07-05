@@ -29,11 +29,15 @@ Rechner-Setup
 SWP:
 # Dome
 [ ] Platte/Befestigung (Fussstütze)
-[ ] Servo 
+[ ] Servo (Wenn Servo dann den Nordpol der Kiste als 0 Grad kalibrieren, Problem: Jitter)
+    Alternative: Dings Lasern!
 [ ] Webcam
 [ ] Programmierung
 # WSPRNET
 [ ] Funkempfänger anschließen
+# draußen
+[ ] Befestigung Antenne
+[ ] Befestigung Kamera
 
 # Kiste
 [ ] Sensorbefestigung
