@@ -32,8 +32,9 @@ class SerialController {
   void parseData() {
     if (serialDebug) print("trying to parse "+buff+", resulting in: ");
     try {
-      rotation = Integer.parseInt(buff.substring(0, buff.length()-1))/10.0;
-      if (serialDebug) println(rotation);
+      float inval = Integer.parseInt(buff.substring(0, buff.length()-1))/10.0;
+      if (serialDebug) println("rotation value from serial: "+inval);
+      if (inval >= 0) rotation = inval;
       // Clear the value of "buff"
       buff = "";
     }

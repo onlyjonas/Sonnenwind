@@ -27,19 +27,22 @@ Rechner-Setup
 [ ] Remote-Desktop?
 [ ] Autostart von Processing-Programm
 [ ] Autostart von WSPRNET Software
+[ ] Kameraeinstellungen (Mikrofon, Autofokus) 
 
 SWP:
 # Dome
 [X] Platte/Befestigung (Fussstütze)
-[ ] Servo, Arduino & Hub Befestigung/Platte lasern
-[ ] Webcam befestigen (2 Komponentenkleber auf Servo)
-[ ] Zweiter Arduino anschließen/programmieren
+[ ] Servo, Befestigung
+    [X] Platte lasern
+    [ ] Platte anschrauben
+[X] Webcam befestigen (2 Komponentenkleber auf Servo)
+[X] 20 m Servokabel
 [ ] Dome an Wand/Säule, whatever befestigen (Bernd?)
-[X] USB-Kabel Kamera
+[X] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0)
 [X] Kabel Servo 20 m
 
 # WSPRNET
-[ ] Funkempfänger anschließen
+[X] Funkempfänger anschließen
 
 # Antenne
 [ ] Befestigung Antenne
@@ -47,17 +50,17 @@ SWP:
 
 # Kiste
 [X] Sensorbefestigung
-[ ] Sensor: Widerstände etc. dranlassen?
-[ ] Ventilator Dioden oder was?
+[X] Sensor: Widerstände etc. dranlassen?
+[X] Ventilator Dioden oder was?
 [ ] Kabelführung (Schrumpfschlauch)
 [X] Kabel kaufen
-[ ] Arduino an Stativ befestigen (2 Platten lasern, m 5)
+[X] Arduino an Stativ befestigen (2 Platten lasern)
 [ ] Folien-Rahmen
 [ ] Laptop fixieren
 [X] Temperatur / Ventilatoren
 [X] Lautsprecher montieren
-[ ] Lautsprecher anlöten
-[ ] Stromversorgung Ventilatoren
+[X] Lautsprecher anlöten
+[X] Stromversorgung Ventilatoren
 [X] Transportkiste Kabellöcher 
 [ ] Transporttasche kaufen
 
@@ -72,6 +75,7 @@ SWP:
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
 [ ] Gaffa
+[ ] Kabelbinder
 [ ] Ohrenstöpsel
 
 # öA
