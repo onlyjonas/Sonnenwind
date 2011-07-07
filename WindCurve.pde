@@ -47,12 +47,14 @@ class WindCurve {
   }
 
   void setActivityOffset(int i, float offset) {
+    if (Float.isNaN(offset))offset=0; 
     offset = offset * h/4; // h/4 = 25 (max offset)
     windVertices.get(i).acivityOffset = offset;
   }
   
   void setNodeOffset(float nodeX, float energy) {  
     int i =floor(nodeX/fieldWidth) ;
+    if (Float.isNaN(energy))energy=0; 
     float offset = energy * h/1.4 *-1;
     windVertices.get(i).nodeOffset = offset;
   }

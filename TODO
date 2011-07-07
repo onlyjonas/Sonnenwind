@@ -4,9 +4,10 @@ Jonas:
 [ ] Fast OPENGL video capture
 [ ] SunViz: sunwind width//+135 - anders passt es nicht 
 [X] WindCurve: pulse verbessern
-[†]†Sonnenaufgang/untergang checken
+[X]†Sonnenaufgang/untergang checken
 [X] Text spiegeln
 [X]†alles 180∞ drehen†
+[ ]†was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
 
 Lasse:
 [X] add Arduino-Class (Rotation-sensor)
