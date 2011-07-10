@@ -36,7 +36,6 @@ class World {
     if (millis() - starttime > interval) {
       createWsprNodesFromWSPRManager();
       starttime = millis();
-      println("worldtimer: "+ starttime);
     }
     rotateTo(r);
     pushMatrix();
@@ -109,7 +108,7 @@ class World {
     int index = -1;
     for (int i=0; i < nodes.size(); i++) {
       if (nodes.get(i).name.equals(name)) {
-        println("same name: "+ name);
+//        println("same name: "+ name);
         index = i;
         break;
       }
@@ -174,7 +173,7 @@ class World {
     int index = -1;
     for (int i=0; i < nodes.size(); i++) {
       if (nodes.get(i).name.equals(name)) {
-        println("same name: "+ name);
+//        println("same name: "+ name);
         index = i;
         break;
       }

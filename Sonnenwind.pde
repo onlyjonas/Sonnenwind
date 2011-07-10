@@ -9,6 +9,9 @@ int screenH;
 int drawMode;
 float myRotation; 
 
+// drawmode: 0 = present / 1 = debug  
+int drawmode = 1;
+
 void setup() {
   size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
   frameRate(24);
@@ -17,7 +20,7 @@ void setup() {
   
   myRotation = 0;
   world = new World((600 * 8), 512, myRotation); // screenSize.x * 8 = camera FOV: ~45°
-  webcam = new Webcam(this, 600, 450);
+  if(drawmode==0) webcam = new Webcam(this, 600, 450);
 
   PFont font;
   font = loadFont("Gulim-11.vlw");
@@ -34,9 +37,6 @@ void draw() {
   serialController.readSerial();
   float rotationFromNorth = rotCorrect.normalizeRotation(serialController.getRotation());
   world.setRotation(rotationFromNorth);
-  
-  // drawmode: 0 = present / 1 = debug  
-  int drawmode = 0;
 
   switch(drawmode) {
   case 0: 
@@ -50,8 +50,8 @@ void draw() {
     world.render();
   
     translate(0, width/2+(width/2-450));
-    fill(255,0,0);
-    rect(0,0,600,450);
+//    fill(255,0,0);
+//    rect(0,0,600,450);
     webcam.render();
     break;
 

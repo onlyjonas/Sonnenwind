@@ -41,7 +41,7 @@ class SunWind {
     float step = (end.x-start.x)/detail;
     for (int i=0; i<detail; i++) {
       stroke(255, 255, 0, map(fieldActivity[i], 0, 1, 0, 255));
-      rect(step*i-step/2, 0, step, 100);
+      rect(step*i-step/2, 0, step, start.y+20);
     }
   }
 
@@ -50,7 +50,7 @@ class SunWind {
     if (activity < minActivity) minActivity = activity;
     activity = map(activity, minActivity, maxActivity, 0, 1);
     fieldActivity[index] = activity;
-    println(index+" is active "+fieldActivity[index]+" max "+maxActivity+", min "+minActivity);
+//    println(index+" is active "+fieldActivity[index]+" max "+maxActivity+", min "+minActivity);
     for (int i = 0;i < windCurves.size(); i++) {
       windCurves.get(i).setActivityOffset(index, activity*i);
     }
