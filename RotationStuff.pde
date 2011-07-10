@@ -55,10 +55,10 @@ class RotationCorrection {
     north = 0;
   }
   float normalizeRotation(float rot) {
-    float nRot = rot-north;
+    float nRot = (rot-north);
     while (nRot < 0) nRot += 360;
     while (nRot > 360) nRot -= 360;
-//    println("rot from "+rot+" to "+nRot+" (north is "+north+").");
+    println("rot from "+rot+" to "+nRot+" (north is "+north+").");
     return nRot;
   }
   void loadNorth() {
@@ -75,7 +75,7 @@ class RotationCorrection {
     }
   }
   void calibrateNorth(float newNorth) {
-    north = newNorth;
+    north = newNorth-30;
     String[] out = new String[1];
     out[0] = ""+north;
     saveStrings("north.dat", out);
