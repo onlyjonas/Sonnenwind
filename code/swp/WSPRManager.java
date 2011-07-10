@@ -49,7 +49,11 @@ public class WSPRManager extends Thread {
       if (debug) System.out.print("trying to load WSPR data...");
       loadFromFile();
       if (debug) System.out.println(" success!");
-      if (debug) System.out.println("now at size "+wsprData.getSpotCount()+"; oldest is: "+wsprData.getOldest().getDate());
+      if (debug) {
+        System.out.print("now at size "+wsprData.getSpotCount()+";");
+        if (oldest != null) System.out.print("oldest is: "+wsprData.getOldest().getDate());
+        System.out.println();
+      }
     } catch (IOException ioe) {
       if (debug) System.out.println(" failed!");
       wsprData = new WSPRData(call, grid);
@@ -67,7 +71,9 @@ public class WSPRManager extends Thread {
           wsprData.readWSPRNET(50*requestCount);
           requestCount++;
           if (debug) System.out.print("Request #"+requestCount);
-          if (debug) System.out.println(". Now at size "+wsprData.getSpotCount()+", oldest is: "+wsprData.getOldest().getDate());
+          System.out.print("now at size "+wsprData.getSpotCount()+";");
+          if (oldest != null) System.out.print("oldest is: "+wsprData.getOldest().getDate());
+          System.out.println();
         } while (wsprData.getOldest().getAge() < 93600000);  // 26 hrs = 93600000 ms
         if (debug) System.out.print("...done.\nsaving...");
         try {

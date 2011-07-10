@@ -10,6 +10,7 @@ Jonas:
 
 Lasse:
 [X] add Arduino-Class (Rotation-sensor)
+[ ] Fix: was wenn keine Spots da? oldest/youngest?
 [ ] SunViz: Geo-Position
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [ ] World: in China dann Geokoordinaten nutzen
@@ -18,6 +19,7 @@ Lasse:
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 [ ] estimateSolarActivity: think again!
 [ ] Serial: Werte unter 0 abfangen!
+[ ] Fakedaten aus Japan
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
@@ -38,7 +40,7 @@ SWP:
 [X] Webcam befestigen (2 Komponentenkleber auf Servo)
 [X] 20 m Servokabel
 [ ] Dome an Wand/Säule, whatever befestigen (Bernd?)
-[X] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0)
+[?] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0)
 [X] Kabel Servo 20 m
 
 # WSPRNET
