@@ -11,7 +11,7 @@ Jonas:
 
 Lasse:
 [X] add Arduino-Class (Rotation-sensor)
-[ ] Fix: was wenn keine Spots da? oldest/youngest?
+[ ] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
 [ ] SunViz: Geo-Position
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [ ] World: in China dann Geokoordinaten nutzen
@@ -35,13 +35,13 @@ Rechner-Setup
 SWP:
 # Dome
 [X] Platte/Befestigung (Fussstütze)
-[ ] Servo, Befestigung
+[X] Servo, Befestigung
     [X] Platte lasern
-    [ ] Platte anschrauben
+    [X] Platte anschrauben
 [X] Webcam befestigen (2 Komponentenkleber auf Servo)
 [X] 20 m Servokabel
 [ ] Dome an Wand/Säule, whatever befestigen (Bernd?)
-[?] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0)
+[X] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0 oder 20 m USB 2.0 repeater!)
 [X] Kabel Servo 20 m
 
 # WSPRNET
@@ -50,12 +50,14 @@ SWP:
 # Antenne
 [ ] Befestigung Antenne
 [ ] BNC-Stecker ans Kabel
+[ ] Stromversorgung Antenne
 
 # Kiste
+[ ] Sichtbare Kabelführung: Form, function und so.
 [X] Sensorbefestigung
 [X] Sensor: Widerstände etc. dranlassen?
 [X] Ventilator Dioden oder was?
-[ ] Kabelführung (Schrumpfschlauch)
+[ ] Audiokabel
 [X] Kabel kaufen
 [X] Arduino an Stativ befestigen (2 Platten lasern)
 [ ] Folien-Rahmen
