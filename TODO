@@ -46,6 +46,7 @@ SWP:
 
 # WSPRNET
 [X] Funkempfänger anschließen
+[ ] Stereo-Audio-Kabel 2m
 
 # Antenne
 [ ] Befestigung Antenne
@@ -57,7 +58,6 @@ SWP:
 [X] Sensorbefestigung
 [X] Sensor: Widerstände etc. dranlassen?
 [X] Ventilator Dioden oder was?
-[ ] Audiokabel
 [X] Kabel kaufen
 [X] Arduino an Stativ befestigen (2 Platten lasern)
 [ ] Folien-Rahmen
@@ -79,11 +79,11 @@ SWP:
 
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
-[ ] Gaffa
+[ ] Gaffa, Signalband Orange
 [ ] Kabelbinder
 [ ] Ohrenstöpsel
+[ ] KHM Stuff/MiGAA usw.?
 
 # öA
-
 [ ] Pressetext
 [ ] Blog aktualisieren
