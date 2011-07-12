@@ -58,7 +58,7 @@ class RotationCorrection {
     float nRot = (rot-north);
     while (nRot < 0) nRot += 360;
     while (nRot > 360) nRot -= 360;
-    println("rot from "+rot+" to "+nRot+" (north is "+north+").");
+//  println("rot from "+rot+" to "+nRot+" (north is "+north+").");
     return nRot;
   }
   void loadNorth() {

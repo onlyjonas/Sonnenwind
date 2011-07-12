@@ -44,14 +44,26 @@ class WsprNode{
     
     void render()
     {
-      drawcircle();
-      drawname(name);
+      drawcircle(pos.x,pos.y);
+      drawname(name, pos.x,pos.y);
+    
+      // draw node twice : viz offset world.w + 600
+      if(pos.x < 600){
+        pushMatrix();
+        translate(world.w+pos.x,pos.y);
+        fill(255,0,0);
+        rect(0,0,10,10);
+        popMatrix();
+        drawcircle(world.w+pos.x,pos.y);
+        drawname(name, world.w+pos.x,pos.y);
+      }
+      
     }
  
-    void drawcircle()
+    void drawcircle(float x, float y)
     {
       pushMatrix();
-        translate(pos.x,pos.y);
+        translate(x,y);
  
         // spot history
         noFill();
@@ -73,16 +85,16 @@ class WsprNode{
     }   
 
     
-    void drawname(String name){
+    void drawname(String name, float x, float y){
       // PosX Line
       stroke(strokeColor);
-      line(pos.x, pos.y, pos.x, world.h);      
+      line(x, y, x, world.h);      
       // Text mirrored
       fill(strokeColor);
       textAlign(CENTER);
       pushMatrix();  
       scale(1, -1);
-      translate(pos.x,-pos.y);
+      translate(x,-y);
       rotate(radians(180));
       text(name, 0, 0);
       popMatrix();

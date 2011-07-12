@@ -22,17 +22,26 @@ class WindCurve {
   }
 
   void render() {
+    
+    int offsetVerts = floor(600/fieldWidth);
+    
     stroke(myColor);
     noFill();
     beginShape();
 
     curveVertex(windVertices.get(0).pos.x-100, windVertices.get(0).pos.y); // the first control point
-
+    
+    // verts 0 - 360 Grad
     for (int i=0; i<detail; i++) {
       curveVertex(windVertices.get(i).pos.x, windVertices.get(i).pos.y);
     }
 
-    curveVertex(windVertices.get(detail-1).pos.x-100, windVertices.get(detail-1).pos.y); // is also the last control point
+    // offset verts 360 + 600 pixel
+    for (int i=0; i<offsetVerts; i++) {
+      curveVertex(w+windVertices.get(i).pos.x, windVertices.get(i).pos.y);
+    }    
+    //curveVertex(windVertices.get(detail-1).pos.x+vizOffset, windVertices.get(detail-1).pos.y);
+    curveVertex(w+windVertices.get(offsetVerts-1).pos.x+100, windVertices.get(offsetVerts-1).pos.y); // is also the last control point
 
     endShape();
   }

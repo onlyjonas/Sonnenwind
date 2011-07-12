@@ -10,7 +10,7 @@ int drawMode;
 float myRotation; 
 
 // drawmode: 0 = present / 1 = debug  
-int drawmode = 0;
+int drawmode = 1;
 
 void setup() {
   size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
@@ -59,7 +59,15 @@ void draw() {
     noStroke();
     fill(0);
     rect(0, 0, width, height); 
+    
+    
     translate(0, 50);
+    
+    // screen view
+    stroke(255,0,0);
+    noFill();
+    rect(1, 1, 598, 510);
+    
     world.render();
     world.renderHorizon();
     world.renderBorder();
