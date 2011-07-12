@@ -2,7 +2,7 @@ TODO:
 
 Jonas:
 [ ] Fast OPENGL video capture
-[ ] SunViz: sunwind width//+135 - anders passt es nichtÊ
+[X] SunViz: sunwind width//+135 - anders passt es nicht
 [X] WindCurve: pulse verbessern
 [X] Sonnenaufgang/untergang checken
 [X] Text spiegeln
@@ -40,7 +40,7 @@ SWP:
     [X] Platte anschrauben
 [X] Webcam befestigen (2 Komponentenkleber auf Servo)
 [X] 20 m Servokabel
-[ ] Dome an Wand/Säule, whatever befestigen (Bernd?)
+[X] Dome an Wand/Säule, whatever befestigen (Bernd?)
 [X] USB-Kabel Kamera (20 m USB 1.1 oder 10 m USB 2.0 oder 20 m USB 2.0 repeater!)
 [X] Kabel Servo 20 m
 
@@ -49,12 +49,12 @@ SWP:
 [ ] Stereo-Audio-Kabel 2m
 
 # Antenne
-[ ] Befestigung Antenne
+[X] Befestigung Antenne
 [ ] BNC-Stecker ans Kabel
 [ ] Stromversorgung Antenne
 
 # Kiste
-[ ] Sichtbare Kabelführung: Form, function und so.
+[X] Sichtbare Kabelführung: Form, function und so.
 [X] Sensorbefestigung
 [X] Sensor: Widerstände etc. dranlassen?
 [X] Ventilator Dioden oder was?
