@@ -55,7 +55,7 @@ class RotationCorrection {
     north = 0;
   }
   float normalizeRotation(float rot) {
-    float nRot = (rot-north);
+    float nRot = 360-(rot-north);  // reverse direction!
     while (nRot < 0) nRot += 360;
     while (nRot > 360) nRot -= 360;
 //  println("rot from "+rot+" to "+nRot+" (north is "+north+").");

@@ -24,8 +24,9 @@ class World {
     // WICHIT, LASSE: in China dann Geokoordinaten nutzen!
     // LongLat myGeoPos;
     long twoMinutes = 60*2*1000;
-    int maxAge = 24; // maxAge ist das Alter, nach dem die Spots weggeschmissen werden in Stunden!
-    wspr = new WSPRManager("DH3JO", "JO30lw", twoMinutes, maxAge, true); // debug = true, macht jede menge ausgaben
+    // String myCall = "A0A0A0";
+    // String myGrid = "OM89EW";  // BEIJING!
+    wspr = new WSPRManager("A0A0A0", "OM89EW", twoMinutes, true, true); // debug = true, macht jede menge ausgaben
     sunviz = new SunViz(this, 900, 15);
     // init node DB
     starttime = millis()-interval;
