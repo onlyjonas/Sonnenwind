@@ -1,4 +1,7 @@
 import processing.opengl.*;
+import fullscreen.*;
+
+FullScreen fs; 
 
 SerialController serialController;
 RotationCorrection rotCorrect;
@@ -29,6 +32,9 @@ void setup() {
   rotCorrect = new RotationCorrection();
   rotCorrect.loadNorth();
   serialController = new SerialController(this);
+  
+  fs = new FullScreen(this); 
+  fs.enter(); 
 }
 
 
