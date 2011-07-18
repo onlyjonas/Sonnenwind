@@ -136,10 +136,11 @@ class World {
   void setSunFieldActivityFromWSPRNET() {
     float step = w/sunviz.sunwind.detail;
     for (int i=0; i < sunviz.sunwind.detail; i++) {
-      float angle = step*i/(float)w*360.0;
+      //float angle = step*i/(float)w*360.0;
+      float angle = 360.0/sunviz.sunwind.detail*i;
       float activity = wspr.getWSPRData().estimateSolarActivity((int)angle);
       sunviz.setFieldActivity(i, activity);
-//      println(step+" "+i+" "+activity+" at "+angle);
+      println(step+" "+i+" "+activity+" at "+angle);
     }
   }
 
