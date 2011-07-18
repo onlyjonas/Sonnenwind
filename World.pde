@@ -36,6 +36,7 @@ class World {
   {
     if (millis() - starttime > interval) {
       createWsprNodesFromWSPRManager();
+      setSunFieldActivityFromWSPRNET();
       starttime = millis();
     }
     rotateTo(r);
@@ -138,7 +139,7 @@ class World {
       float angle = step*i/(float)w*360.0;
       float activity = wspr.getWSPRData().estimateSolarActivity((int)angle);
       sunviz.setFieldActivity(i, activity);
-      println(step+" "+i+" "+activity+" at "+angle);
+//      println(step+" "+i+" "+activity+" at "+angle);
     }
   }
 

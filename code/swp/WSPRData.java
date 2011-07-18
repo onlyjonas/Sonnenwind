@@ -129,7 +129,7 @@ public class WSPRData implements Serializable{
       }
     }
     float act = count/(float)allSpots.size();
-    return act;
+    return 1-act;
   }
   
   protected void readWSPRNET(int number) throws Exception {

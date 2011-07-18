@@ -2,7 +2,7 @@ class SunWind {
 
   PVector start, end; 
   int detail;
-  int windLines=1;
+  int windLines=5;
   float strength=20.0;
   float[] fieldActivity; // 0 = no activity | 1 = full activity
   ArrayList<WindCurve> windCurves = new ArrayList();
