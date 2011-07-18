@@ -10,11 +10,12 @@ Jonas:
 [ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
 
 Lasse:
+[ ] das timeout problem
+[ ] fakeData vorhalten!
 [X] add Arduino-Class (Rotation-sensor)
 [X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
 [ ] obiges testen
 [X] Check: was macht der Constructor wenn keine Spots inna DB?
-[ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [X] World: in China dann Geokoordinaten nutzen
 [X] was ist mit den kölner spots, wenn in china? (selber bei wsprnet anmelden) oder locator checken...
 [X] estimateSolarActivity: in welchem range?

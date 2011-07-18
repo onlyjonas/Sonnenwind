@@ -103,6 +103,11 @@ public class WSPRManager extends Thread {
         }
       } catch (Exception e) {
         if (debug) System.out.println("Could not read or parse WSPRNET!");
+        try {
+          loadFakeData();
+        } catch (Exception ee) {
+          if (debug) System.out.println("Could not load fake data, because of an "+ee);
+        }
       }
   }
   
