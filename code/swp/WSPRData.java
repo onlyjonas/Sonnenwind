@@ -108,7 +108,7 @@ public class WSPRData implements Serializable {
   
   public void readWSPRNET(int number) throws Exception {
     DOMParser parser = new DOMParser();
-
+    
     parser.parse("http://wsprnet.org/olddb/?mode=html&band=all&limit="+number+"&sort=date&findreporter="+myCall+"&sort=date");
     Document doc = parser.getDocument();
     NodeList nList = doc.getElementsByTagName("tr");

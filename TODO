@@ -10,21 +10,19 @@ Jonas:
 [ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
 
 Lasse:
-[X] Fullscreen
-[ ] FS testen
 [X] add Arduino-Class (Rotation-sensor)
 [X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
 [ ] obiges testen
 [X] Check: was macht der Constructor wenn keine Spots inna DB?
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [X] World: in China dann Geokoordinaten nutzen
-[ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
+[X] was ist mit den kölner spots, wenn in china? (selber bei wsprnet anmelden) oder locator checken...
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 [ ] estimateSolarActivity: think again!
 [X] Serial: Werte unter 0 abfangen!
 [X] Fakedaten aus Japan (siehe LoadFakeData.pde)
-[ ] Drehrichtung checken
+[X] Drehrichtung checken
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
@@ -50,7 +48,7 @@ SWP:
 
 # WSPRNET
 [X] Funkempfänger anschließen
-[ ] Stereo-Audio-Kabel 2m
+[X] Stereo-Audio-Kabel 2m
 
 # Antenne
 [X] Befestigung Antenne
