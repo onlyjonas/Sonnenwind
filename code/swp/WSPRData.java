@@ -138,7 +138,7 @@ public class WSPRData implements Serializable {
         
         // is spot already in list?
         // if new: add this spot to the list
-        if (!isDoubleSpot(spot)) {
+        if (!isDoubleSpot(spot) && isCorrentCallGrid(spot)) {
           // derive location
           spot.longlat = QTHTools.loc2geo(spot.grid);
           // add to list at appropriate position
@@ -183,6 +183,10 @@ public class WSPRData implements Serializable {
     allSpots.add(spot);
     // if too long, remove one
     if (allSpots.size() > maxSize) allSpots.remove(0);
+  }
+  
+  protected boolean isCorrentCallGrid(WSPRSpot s) {
+    return (s.call.equals(myCall) && s.grid.equals(myGrid));
   }
   
   protected boolean isDoubleSpot(WSPRSpot s) {

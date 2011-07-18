@@ -1,7 +1,6 @@
 TODO:
 
 Jonas:
-[ ] Fullscreen?
 [ ] Fast OPENGL video capture
 [X] SunViz: sunwind width//+135 - anders passt es nicht
 [X] WindCurve: pulse verbessern
@@ -11,6 +10,8 @@ Jonas:
 [ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
 
 Lasse:
+[X] Fullscreen
+[ ] FS testen
 [X] add Arduino-Class (Rotation-sensor)
 [X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
 [ ] obiges testen
