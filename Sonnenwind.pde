@@ -1,7 +1,4 @@
 import processing.opengl.*;
-import fullscreen.*;
-
-FullScreen fs; 
 
 SerialController serialController;
 RotationCorrection rotCorrect;
@@ -13,7 +10,7 @@ int drawMode;
 float myRotation; 
 
 // drawmode: 0 = present / 1 = debug  
-int drawmode = 0;
+int drawmode = 1;
 
 void setup() {
   size(1024, 600, OPENGL); // Webcam 512*600 | Screen 512*600
@@ -32,9 +29,6 @@ void setup() {
   rotCorrect = new RotationCorrection();
   rotCorrect.loadNorth();
   serialController = new SerialController(this);
-  
-  fs = new FullScreen(this); 
-  fs.enter(); 
 }
 
 

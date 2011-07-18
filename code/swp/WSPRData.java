@@ -12,7 +12,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.*;
 
-public class WSPRData implements Serializable {
+public class WSPRData implements Serializable{
   private LinkedList<WSPRSpot> allSpots;
   private long minTime;
   private WSPRSpot oldest;
@@ -22,6 +22,7 @@ public class WSPRData implements Serializable {
   private String myGrid;
   private LongLat myLongLat;
   private int maxSize;
+  private long timeout;
   
   public String getCall() {
     return myCall;
@@ -43,9 +44,15 @@ public class WSPRData implements Serializable {
     oldest = null;
     maxTime = 0;
     youngest = null;
-    maxSize = 100;
+    maxSize = 250;
+    timeout = 5000;
   }
-  
+  public long getTimeout() {
+    return timeout;
+  }
+  public void setTimeout(long t) {
+    timeout = t;
+  }
   public int getSpotCount() {
     return allSpots.size();
   }
@@ -74,8 +81,13 @@ public class WSPRData implements Serializable {
   /** Attemps to estimate radio wave absorbtion caused by ionization of layer D using the following rationale:
       IF in this direction +/-SOME degress has been more activity at time 24-26 h before the last two hours 
       THEN solar activity is high 
-      i.e. activity is number of spots today MINUS yesterday. */
-  public int estimateSolarActivity(int angle) {
+      i.e. activity is number of spots today MINUS yesterday. 
+      
+      
+      ...
+      doesn't make sense, though
+      */
+  public int estimateSolarActivityOLD(int angle) {
     long now = Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTime().getTime(); // now
     long twoHours = 7200000;
     long twentyFourHours = 86400000;
@@ -106,10 +118,24 @@ public class WSPRData implements Serializable {
     return activityChange;
   }
   
-  public void readWSPRNET(int number) throws Exception {
+  public float estimateSolarActivity(int angle) {
+    long hours = 24*60*60*1000;
+    int count = 0;
+    for (int i=allSpots.size()-1; i>-1; i--) {
+      WSPRSpot s = allSpots.get(i);
+      // inside +/- 20 deg range?
+      if ((s.getAzimuth() > angle-20) && (s.getAzimuth() < angle+20)) {
+        /*if (s.getAge()<hours) */count++;
+      }
+    }
+    float act = count/(float)allSpots.size();
+    return act;
+  }
+  
+  protected void readWSPRNET(int number) throws Exception {
     DOMParser parser = new DOMParser();
-    
     parser.parse("http://wsprnet.org/olddb/?mode=html&band=all&limit="+number+"&sort=date&findreporter="+myCall+"&sort=date");
+//    System.out.println("http://wsprnet.org/olddb/?mode=html&band=all&limit="+number+"&sort=date&findreporter="+myCall+"&sort=date");
     Document doc = parser.getDocument();
     NodeList nList = doc.getElementsByTagName("tr");
     // skip first 4 table rows -- this is extremely quick and dirty!
@@ -135,16 +161,16 @@ public class WSPRData implements Serializable {
         spot.km = Integer.parseInt(cols.item(10).getFirstChild().getNodeValue().trim().replaceAll("\u00A0", ""));
         
         spot.createDate();
-        
+
         // is spot already in list?
         // if new: add this spot to the list
-        if (!isDoubleSpot(spot) && isCorrentCallGrid(spot)) {
+        if (!isDoubleSpot(spot) && isCurrentReporterGrid(spot)) {
           // derive location
           spot.longlat = QTHTools.loc2geo(spot.grid);
-          // add to list at appropriate position
-          insertSpot(spot);
           // then update min/max time
           if (spot.longlat!=null) {
+            // add to list at appropriate position
+            insertSpot(spot);
             spot.computeRelativePosition(myLongLat);
             if (spot.spotDate.getTime() <= minTime) {
               minTime = spot.spotDate.getTime();
@@ -158,6 +184,20 @@ public class WSPRData implements Serializable {
         }
       }
     }
+  }
+  
+  public void readWSPRNETThreaded(int number) throws Exception {
+    WSPRThread reader = new WSPRThread(number, this);
+    reader.start();
+    long starttime = Calendar.getInstance().getTime().getTime();
+    while (reader.isRequesting()) {
+      Thread.currentThread().sleep(500);
+      if (Calendar.getInstance().getTime().getTime() - starttime < timeout) {
+        reader.interrupt();
+      }
+    }
+//    System.out.println("Ending with "+reader.getException());
+    if (reader.getException()!=null) throw reader.getException();
   }
   
   public void deleteSpotsOlderThan(long maxAge) {
@@ -185,8 +225,8 @@ public class WSPRData implements Serializable {
     if (allSpots.size() > maxSize) allSpots.remove(0);
   }
   
-  protected boolean isCorrentCallGrid(WSPRSpot s) {
-    return (s.call.equals(myCall) && s.grid.equals(myGrid));
+  protected boolean isCurrentReporterGrid(WSPRSpot s) {
+    return (s.by.equals(myCall) && s.loc.equals(myGrid));
   }
   
   protected boolean isDoubleSpot(WSPRSpot s) {
@@ -202,5 +242,37 @@ public class WSPRData implements Serializable {
       out.append(allSpots.get(i)+"\n");
     }
     return out+"";
+  }
+  private class WSPRThread extends Thread {
+    private int reqNumber;
+    private boolean requesting;
+    private WSPRData parent;
+    Exception exception;
+    public boolean isRequesting() {
+      return requesting;
+    }
+    public Exception getException() {
+      return exception;
+    }
+    public WSPRThread(int number, WSPRData parent) {
+      this.parent = parent;
+      this.reqNumber = number;
+      exception = null;
+      requesting = true;
+    }
+    public void run() {
+      try {
+        requesting = true;
+        System.out.print("WSPRThread running...");
+        parent.readWSPRNET(reqNumber);
+        System.out.println(" done.");
+        requesting = false;
+      } catch (InterruptedException ire) {
+        System.out.println(" interrupted.");
+        requesting = false;
+      } catch (Exception e) {
+        exception = e;
+      }
+    }
   }
 }

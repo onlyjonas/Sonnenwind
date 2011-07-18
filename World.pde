@@ -137,7 +137,8 @@ class World {
     for (int i=0; i < sunviz.sunwind.detail; i++) {
       float angle = step*i/(float)w*360.0;
       float activity = wspr.getWSPRData().estimateSolarActivity((int)angle);
-      sunviz.setFieldActivity((int)random(sunviz.activityFields-1), activity);
+      sunviz.setFieldActivity(i, activity);
+      println(step+" "+i+" "+activity+" at "+angle);
     }
   }
 
