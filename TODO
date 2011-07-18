@@ -7,7 +7,8 @@ Jonas:
 [X] Sonnenaufgang/untergang checken
 [X] Text spiegeln
 [X] alles 180° drehen 
-[ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
+[X] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
+[ ] Sunwind render an die richtige stelle schieben?
 
 Lasse:
 [ ] das timeout problem
@@ -20,7 +21,7 @@ Lasse:
 [X] was ist mit den kölner spots, wenn in china? (selber bei wsprnet anmelden) oder locator checken...
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
-[ ] estimateSolarActivity: think again!
+[X] estimateSolarActivity: think again!
 [X] Serial: Werte unter 0 abfangen!
 [X] Fakedaten aus Japan (siehe LoadFakeData.pde)
 [X] Drehrichtung checken
