@@ -10,17 +10,21 @@ Jonas:
 [ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
 
 Lasse:
+[X] Fullscreen
+[ ] FS testen
 [X] add Arduino-Class (Rotation-sensor)
-[ ] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
-[ ] SunViz: Geo-Position
+[X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
+[ ] obiges testen
+[X] Check: was macht der Constructor wenn keine Spots inna DB?
 [ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
-[ ] World: in China dann Geokoordinaten nutzen
+[X] World: in China dann Geokoordinaten nutzen
 [ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
 [ ] estimateSolarActivity: think again!
-[ ] Serial: Werte unter 0 abfangen!
-[ ] Fakedaten aus Japan
+[X] Serial: Werte unter 0 abfangen!
+[X] Fakedaten aus Japan (siehe LoadFakeData.pde)
+[ ] Drehrichtung checken
 
 Rechner-Setup
 [ ] Windows-Update deaktivieren
@@ -46,6 +50,7 @@ SWP:
 
 # WSPRNET
 [X] Funkempfänger anschließen
+[ ] Stereo-Audio-Kabel 2m
 
 # Antenne
 [X] Befestigung Antenne
@@ -57,7 +62,6 @@ SWP:
 [X] Sensorbefestigung
 [X] Sensor: Widerstände etc. dranlassen?
 [X] Ventilator Dioden oder was?
-[ ] Audiokabel
 [X] Kabel kaufen
 [X] Arduino an Stativ befestigen (2 Platten lasern)
 [ ] Folien-Rahmen
@@ -79,11 +83,18 @@ SWP:
 
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
-[ ] Gaffa
+[ ] Gaffa, Signalband Orange
 [ ] Kabelbinder
 [ ] Ohrenstöpsel
+[ ] KHM Stuff/MiGAA usw.?
 
 # öA
-
 [ ] Pressetext
 [ ] Blog aktualisieren
+
+# Daten
+QTH, Beijing:
+via http://f6fvy.free.fr/qthLocator/fullScreen.php
+Long : 116.37182 E (116° 22' 19'' E)
+Lat : 39.92948 N (39° 55' 46'' N)
+QTH locator : OM89EW

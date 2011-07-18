@@ -21,7 +21,14 @@ public class WSPRData implements Serializable {
   private String myCall;
   private String myGrid;
   private LongLat myLongLat;
-  private long maxAge;
+  private int maxSize;
+  
+  public String getCall() {
+    return myCall;
+  }
+  public String getGrid() {
+    return myGrid;
+  }
   
   public WSPRData(String call, String grid) {
     this(call, QTHTools.loc2geo(grid));
@@ -36,6 +43,7 @@ public class WSPRData implements Serializable {
     oldest = null;
     maxTime = 0;
     youngest = null;
+    maxSize = 100;
   }
   
   public int getSpotCount() {
@@ -53,15 +61,14 @@ public class WSPRData implements Serializable {
   public WSPRSpot getOldest() {
     return oldest;
   }
-  public void setMaxAgeHours(int hours) {
-    maxAge = hours * 3600000;
-    ageCheck();
-  }
-  public int getMaxAgeHours() {
-    return (int)(maxAge / 3600000);
-  }
   public LongLat getGeoPos() {
     return myLongLat;
+  }
+  public int getMaxSize() {
+    return maxSize;
+  }
+  public void setMaxSize(int maxSize) {
+    this.maxSize = maxSize;
   }
   
   /** Attemps to estimate radio wave absorbtion caused by ionization of layer D using the following rationale:
@@ -131,7 +138,7 @@ public class WSPRData implements Serializable {
         
         // is spot already in list?
         // if new: add this spot to the list
-        if (!isDoubleSpot(spot)) {
+        if (!isDoubleSpot(spot) && isCorrentCallGrid(spot)) {
           // derive location
           spot.longlat = QTHTools.loc2geo(spot.grid);
           // add to list at appropriate position
@@ -153,7 +160,7 @@ public class WSPRData implements Serializable {
     }
   }
   
-  protected void ageCheck() {
+  public void deleteSpotsOlderThan(long maxAge) {
     for (int i=allSpots.size()-1; i>-1; i--) {
       WSPRSpot s = allSpots.get(i);
       if (s.getAge() > maxAge) {
@@ -168,12 +175,18 @@ public class WSPRData implements Serializable {
     for (int i=0; i<allSpots.size(); i++) {
       if (spot.spotDate.getTime() < allSpots.get(i).spotDate.getTime()) {
         allSpots.add(i, spot);
-        ageCheck();
+        // if too long, remove one
+        if (allSpots.size() > maxSize) allSpots.remove(0);
         return;
       }
     }
     allSpots.add(spot);
-    ageCheck();
+    // if too long, remove one
+    if (allSpots.size() > maxSize) allSpots.remove(0);
+  }
+  
+  protected boolean isCorrentCallGrid(WSPRSpot s) {
+    return (s.call.equals(myCall) && s.grid.equals(myGrid));
   }
   
   protected boolean isDoubleSpot(WSPRSpot s) {
