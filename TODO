@@ -27,10 +27,11 @@ Lasse:
 [X] Drehrichtung checken
 
 Rechner-Setup
-[ ] Windows-Update deaktivieren
-[ ] Energiesparmodus deaktivieren
-[ ] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren
+[X] Windows-Update deaktivieren
+[X] Energiesparmodus deaktivieren
+[X] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren: Wartungscenter: Benachrichtigungen deaktiviert(done?)
 [X] ASUS-Update deaktivieren
+[X] Auto-Login (SWP Passwort entfernen)
 [ ] Remote-Desktop?
 [ ] Autostart von Processing-Programm
 [ ] Autostart von WSPRNET Software
@@ -54,8 +55,8 @@ SWP:
 
 # Antenne
 [X] Befestigung Antenne
-[ ] BNC-Stecker ans Kabel
-[ ] Stromversorgung Antenne
+[X] BNC-Stecker ans Kabel
+[X] Stromversorgung Antenne
 
 # Kiste
 [X] Sichtbare Kabelführung: Form, function und so.
@@ -83,10 +84,18 @@ SWP:
 
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
-[ ] Gaffa, Signalband Orange
+[X] Gaffa, Signalband Orange
 [ ] Kabelbinder
 [ ] Ohrenstöpsel
 [ ] KHM Stuff/MiGAA usw.?
+[ ] Daton hotel ins dokument
+[ ] alles ausdrucken
+  [ ] Reisesachen ausdrucken (alle Hotels, ETC)
+  [ ] alle Quittungen!
+  [ ] alle Flugdaten
+  [ ] Einladung/Periskopbeschreibung
+[ ] Rolle Draht (um Antenne notfalls zu erden)
+[ ] Telefonnummer China?
 
 # öA
 [ ] Pressetext
