@@ -8,8 +8,8 @@ Jonas:
 [X] Text spiegeln
 [X] alles 180° drehen 
 [X] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
-[ ] Sunwind render an die richtige stelle schieben?
-[ ] fields im offset berreich
+[-] Sunwind render an die richtige stelle schieben?
+[-] fields im offset berreich
 [ ] history nodes - farbe aktuell gruen , weiss wenn aelter als 24h...
 
 Lasse:
