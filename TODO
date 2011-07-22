@@ -34,7 +34,7 @@ Rechner-Setup
 [X] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren: Wartungscenter: Benachrichtigungen deaktiviert(done?)
 [X] ASUS-Update deaktivieren
 [X] Auto-Login (SWP Passwort entfernen)
-[ ] Remote-Desktop?
+[X] Remote-Desktop?
 [ ] Autostart von Processing-Programm
 [ ] Autostart von WSPRNET Software
 [ ] Kameraeinstellungen (Mikrofon, Autofokus) 
@@ -74,7 +74,7 @@ SWP:
 [X] Lautsprecher anlöten
 [X] Stromversorgung Ventilatoren
 [X] Transportkiste Kabellöcher 
-[ ] Transporttasche kaufen
+[X] Transporttasche kaufen
 
 # Baumarkt
 [X] Imbus (M5) und Schraubenschlüssel (M10)
@@ -87,20 +87,20 @@ SWP:
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
 [X] Gaffa, Signalband Orange
-[ ] Kabelbinder
-[ ] Ohrenstöpsel
-[ ] KHM Stuff/MiGAA usw.?
-[ ] Daton hotel ins dokument
-[ ] alles ausdrucken
-  [ ] Reisesachen ausdrucken (alle Hotels, ETC)
-  [ ] alle Quittungen!
-  [ ] alle Flugdaten
-  [ ] Einladung/Periskopbeschreibung
+[X] Kabelbinder
+[X] Ohrenstöpsel
+[X] KHM Stuff/MiGAA usw.?
+[X] Daton hotel ins dokument
+[X] alles ausdrucken
+  [X] Reisesachen ausdrucken (alle Hotels, ETC)
+  [X] alle Quittungen!
+  [X] alle Flugdaten
+  [X] Einladung/Periskopbeschreibung
 [ ] Rolle Draht (um Antenne notfalls zu erden)
-[ ] Telefonnummer China?
+[X] Telefonnummer China?
 
 # öA
-[ ] Pressetext
+[X] Pressetext
 [ ] Blog aktualisieren
 
 # Daten

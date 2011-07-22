@@ -194,8 +194,6 @@ public class WSPRData implements Serializable{
       Thread.currentThread().sleep(500);
       System.out.println("at "+(Calendar.getInstance().getTime().getTime() - starttime)+" until "+timeout);
       if (Calendar.getInstance().getTime().getTime() - starttime > timeout) {
-        System.out.println("kill alter!");
-        
         reader.emergencyStop();
       }
     }
@@ -248,7 +246,7 @@ public class WSPRData implements Serializable{
   }
   private class WSPRThread extends Thread {
     private int reqNumber;
-    private boolean requesting;
+    private volatile boolean requesting;
     private WSPRData parent;
     Exception exception;
     public boolean isRequesting() {
@@ -259,7 +257,6 @@ public class WSPRData implements Serializable{
     }
     public void emergencyStop() {
       requesting = false;
-      //stop();
       interrupt();
     }
     public WSPRThread(int number, WSPRData parent) {
