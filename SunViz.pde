@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import swp.Sun;
 
 class SunViz {
@@ -88,3 +89,96 @@ class SunViz {
   }
 }
 
+=======
+import swp.Sun;
+
+class SunViz {
+
+  PVector pos;
+  color myColor;
+  int mySize =20;
+  World world;
+  Sun sun;
+  SunWind sunwind;
+
+  int timer, windDelay, windIndex;
+  int activityFields=36;
+  float horizon;
+
+  SunViz(World _world, float _x, float _y)
+  {
+    pos = new PVector(_x, _y);
+    myColor = color(255, 255, 0);
+    windDelay=5;
+    timer=0;
+    world = _world;
+    LongLat myGeo = new LongLat();
+    myGeo.lng = 7;  //Position, etwa hier, muss anders gemacht werden
+    myGeo.lat = 51;
+    sun = new Sun(myGeo, 1000);  // 1000 = 1 s update zyklus
+    sun.start();
+    float sunwindHeight = 80;
+    sunwind = new SunWind(world.horizon-20, world.w+135, sunwindHeight, activityFields); //+135 - anders passt es nicht ???
+  }
+
+  void render()
+  {
+    updateSunPos();
+    drawSun();
+    drawWind();
+
+    // hide everything beneath the horizon
+//    fill (0, 150);
+//    rect(0, world.horizon, world.w, world.h-world.horizon);
+  }
+
+  private void drawSun()
+  {
+    float s = mySize;
+    if(pos.y<world.horizon) s = mySize + dist(pos.x,pos.y, pos.x, world.horizon); 
+    stroke(myColor);
+    line(pos.x-s/3, pos.y-s/3, pos.x+s/3, pos.y+s/3);
+    line(pos.x-s/3, pos.y+s/3, pos.x+s/3, pos.y-s/3);
+    line(pos.x-s/2, pos.y, pos.x+s/2, pos.y);
+    line(pos.x, pos.y-s/2, pos.x, pos.y+s/2);
+  }
+
+  private void drawWind()
+  {
+    sunwind.update(pos.x, pos.y);
+    updateNodeEnergy();
+    sunwind.render();
+  }
+
+  void updateSunPos()
+  {
+    pos.x = map((float)sun.getAzimuth(), 0, 360, 0, world.w); // Muss Lasse noch kontrollieren
+    pos.y = map((float)sun.getElevation(), 70, -70, world.horizon-200, world.horizon+200); 
+    //    println("sun: "+sun.getAzimuth()+", "+sun.getElevation());
+  }
+
+  void setPos(float _x, float _y)
+  {
+    pos.x = _x;
+    pos.y = _y;
+  }
+
+  void setColor(int r, int g, int b)
+  {
+    myColor = color(r, g, b);
+  }
+
+  void setFieldActivity(int i, float activity) {
+    sunwind.setFieldActivity(i, activity);
+  }
+  
+  void updateNodeEnergy() {
+    for (int i=0;i<world.nodes.size();i++) {
+      float nodeX = world.nodes.get(i).pos.x;
+      float nodeEnergy = world.nodes.get(i).getEnergy();
+      sunwind.updateNodeEnergy(nodeX, nodeEnergy);
+    }
+  }
+}
+
+>>>>>>> 8af97170c9db07fb6272ac423d2919f6ebdd3fb6
