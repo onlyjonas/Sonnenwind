@@ -14,7 +14,7 @@ Jonas:
 
 
 Lasse:
-[ ] das timeout problem
+[X] das timeout problem
 [ ] fakeData vorhalten!
 [X] add Arduino-Class (Rotation-sensor)
 [X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
