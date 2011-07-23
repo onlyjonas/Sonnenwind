@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 import swp.Sun;
 
 class SunViz {
@@ -89,7 +89,7 @@ class SunViz {
   }
 }
 
-=======
+=======*/
 import swp.Sun;
 
 class SunViz {
@@ -113,8 +113,8 @@ class SunViz {
     timer=0;
     world = _world;
     LongLat myGeo = new LongLat();
-    myGeo.lng = 7;  //Position, etwa hier, muss anders gemacht werden
-    myGeo.lat = 51;
+    myGeo.lng = 116.37182;  // PEKING!
+    myGeo.lat = 39.92948;
     sun = new Sun(myGeo, 1000);  // 1000 = 1 s update zyklus
     sun.start();
     float sunwindHeight = 80;
@@ -124,7 +124,8 @@ class SunViz {
   void render()
   {
     updateSunPos();
-    drawSun();
+    drawSun(pos.x, pos.y);
+    drawSun(pos.x+world.w, pos.y);  // wrap hack!
     drawWind();
 
     // hide everything beneath the horizon
@@ -132,15 +133,15 @@ class SunViz {
 //    rect(0, world.horizon, world.w, world.h-world.horizon);
   }
 
-  private void drawSun()
+  private void drawSun(float px, float py)
   {
     float s = mySize;
-    if(pos.y<world.horizon) s = mySize + dist(pos.x,pos.y, pos.x, world.horizon); 
+    if(py<world.horizon) s = mySize + dist(px,py, px, world.horizon); 
     stroke(myColor);
-    line(pos.x-s/3, pos.y-s/3, pos.x+s/3, pos.y+s/3);
-    line(pos.x-s/3, pos.y+s/3, pos.x+s/3, pos.y-s/3);
-    line(pos.x-s/2, pos.y, pos.x+s/2, pos.y);
-    line(pos.x, pos.y-s/2, pos.x, pos.y+s/2);
+    line(px-s/3, py-s/3, px+s/3, py+s/3);
+    line(px-s/3, py+s/3, px+s/3, py-s/3);
+    line(px-s/2, py, px+s/2, py);
+    line(px, py-s/2, px, py+s/2);
   }
 
   private void drawWind()
@@ -181,4 +182,4 @@ class SunViz {
   }
 }
 
->>>>>>> 8af97170c9db07fb6272ac423d2919f6ebdd3fb6
+//>>>>>>> 8af97170c9db07fb6272ac423d2919f6ebdd3fb6

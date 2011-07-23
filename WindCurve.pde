@@ -36,7 +36,7 @@ class WindCurve {
       curveVertex(windVertices.get(i).pos.x, windVertices.get(i).pos.y);
     }
 
-    // offset verts 360 + 600 pixel
+    // Wrap Hack + 600 pixel
     for (int i=0; i<offsetVerts; i++) {
       curveVertex(w+windVertices.get(i).pos.x, windVertices.get(i).pos.y);
     }    

@@ -119,11 +119,11 @@ class World {
     if (index >= 0) {
       // NODE ALREADY EXISTS
       //nodes.get(index).update(azimuth, distance, energy);
-      nodes.get(index).updateEnergy(energy);
+      nodes.get(index).updateEnergy(energy, Calendar.getInstance().getTime());
     }    
     else {
       // NEW NODE
-      WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
+      WsprNode node = new WsprNode(this, name, azimuth, distance, energy, Calendar.getInstance().getTime());
       nodes.add(node);
     }
   } 
@@ -185,11 +185,11 @@ class World {
     if (index >= 0) {
       // NODE ALREADY EXISTS
       //nodes.get(index).update(azimuth, distance, energy);
-      nodes.get(index).updateEnergy(energy);
+      nodes.get(index).updateEnergy(energy, spot.getDate());
     }    
     else {
       // NEW NODE
-      WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
+      WsprNode node = new WsprNode(this, name, azimuth, distance, energy, spot.getDate());
       nodes.add(node);
       println("added new node: "+node);
     }

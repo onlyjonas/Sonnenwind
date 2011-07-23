@@ -1,5 +1,4 @@
 class SunWind {
-
   PVector start, end; 
   int detail;
   int windLines=5;
