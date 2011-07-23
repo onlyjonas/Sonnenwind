@@ -118,7 +118,7 @@ class SunViz {
     sun = new Sun(myGeo, 1000);  // 1000 = 1 s update zyklus
     sun.start();
     float sunwindHeight = 80;
-    sunwind = new SunWind(world.horizon-20, world.w+135, sunwindHeight, activityFields); //+135 - anders passt es nicht ???
+    sunwind = new SunWind(world.horizon-20, world.w, sunwindHeight, activityFields); 
   }
 
   void render()

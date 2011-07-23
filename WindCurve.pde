@@ -23,7 +23,7 @@ class WindCurve {
 
   void render() {
     
-    int offsetVerts = floor(600/fieldWidth);
+    int offsetVerts = ceil(600/fieldWidth)+1;
     
     stroke(myColor);
     noFill();
@@ -34,12 +34,16 @@ class WindCurve {
     // verts 0 - 360 Grad
     for (int i=0; i<detail; i++) {
       curveVertex(windVertices.get(i).pos.x, windVertices.get(i).pos.y);
+      print("i; "+i + " x: "+ windVertices.get(i).pos.y+", ");
     }
+    println();
 
     // Wrap Hack + 600 pixel
-    for (int i=0; i<offsetVerts; i++) {
+    for (int i=1; i<offsetVerts; i++) {
       curveVertex(w+windVertices.get(i).pos.x, windVertices.get(i).pos.y);
-    }    
+      print("iwrap; "+i + " x: "+ windVertices.get(i).pos.y+", ");
+    }
+    println();
     //curveVertex(windVertices.get(detail-1).pos.x+vizOffset, windVertices.get(detail-1).pos.y);
     curveVertex(w+windVertices.get(offsetVerts-1).pos.x+100, windVertices.get(offsetVerts-1).pos.y); // is also the last control point
 
@@ -50,9 +54,7 @@ class WindCurve {
     
     for (int i=0; i<detail; i++) {
       windVertices.get(i).update( _sunX,  _sunY);
-    }
-   
-    
+    }    
   }
 
   void setActivityOffset(int i, float offset) {
@@ -104,14 +106,13 @@ class WindCurve {
          starttime = millis();
       }
 
-
       // move to target (easing)
       pos.x += (( target.x - pos.x) * 0.1); 
       pos.y += (( target.y - pos.y) * 0.08); 
-      
+
       // draw debug line
       stroke(255, 0, 0); 
-      line(pos.x, pos.y-5, pos.x, pos.y+5);
+      line(pos.x, pos.y-5, pos.x, pos.y+5);      
     }
   }
 }
