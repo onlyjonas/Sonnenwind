@@ -26,7 +26,7 @@ class SunWind {
 
   void render() {
     for (int i = 0;i < windCurves.size(); i++) windCurves.get(i).render();
-    drawFields();
+//    drawFields();
   }
 
   void update(float _sunX, float _sunY) {
