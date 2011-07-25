@@ -29,6 +29,7 @@ void setup() {
   rotCorrect = new RotationCorrection();
   rotCorrect.loadNorth();
   serialController = new SerialController(this);
+  noCursor();
 }
 
 

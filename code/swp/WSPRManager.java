@@ -16,7 +16,6 @@ public class WSPRManager extends Thread {
   private int failCount;
   private int failMax;
   boolean autoSave;
-  
   private boolean debug;
   
   public synchronized int getFailMax() {
@@ -70,16 +69,16 @@ public class WSPRManager extends Thread {
       try {
         boolean done = false;
         do {
-          wsprData.readWSPRNET(50*requestCount);
+          wsprData.readWSPRNETThreaded(50*requestCount);
           requestCount++;
           if (debug) {
             System.out.print("Request #"+requestCount);
             System.out.print(" now at size "+wsprData.getSpotCount()+";");
-            if (wsprData.getOldest() != null) System.out.print("oldest is: "+wsprData.getOldest().getDate());
+            if (wsprData.getOldest() != null) System.out.print(" oldest is: "+wsprData.getOldest().getDate());
             System.out.println();
           }
           if (wsprData.getOldest() != null) {
-            done = wsprData.getOldest().getAge() < 93600000;
+            done = wsprData.getOldest().getAge() > 93600000;
           }
         } while (!done && requestCount < 20);  // 26 hrs = 93600000 ms
         if (debug) System.out.println("...done.");
@@ -102,7 +101,12 @@ public class WSPRManager extends Thread {
           }
         }
       } catch (Exception e) {
-        if (debug) System.out.println("Could not read or parse WSPRNET!");
+        if (debug) System.out.println("Could not read or parse WSPRNET! "+e);
+        try {
+          loadFakeData();
+        } catch (Exception ee) {
+          if (debug) System.out.println("Could not load fake data, because of an "+ee);
+        }
       }
   }
   

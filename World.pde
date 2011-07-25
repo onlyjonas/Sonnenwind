@@ -36,6 +36,7 @@ class World {
   {
     if (millis() - starttime > interval) {
       createWsprNodesFromWSPRManager();
+      setSunFieldActivityFromWSPRNET();
       starttime = millis();
     }
     rotateTo(r);
@@ -118,11 +119,11 @@ class World {
     if (index >= 0) {
       // NODE ALREADY EXISTS
       //nodes.get(index).update(azimuth, distance, energy);
-      nodes.get(index).updateEnergy(energy);
+      nodes.get(index).updateEnergy(energy, Calendar.getInstance().getTime());
     }    
     else {
       // NEW NODE
-      WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
+      WsprNode node = new WsprNode(this, name, azimuth, distance, energy, Calendar.getInstance().getTime());
       nodes.add(node);
     }
   } 
@@ -135,9 +136,11 @@ class World {
   void setSunFieldActivityFromWSPRNET() {
     float step = w/sunviz.sunwind.detail;
     for (int i=0; i < sunviz.sunwind.detail; i++) {
-      float angle = step*i/(float)w*360.0;
+      //float angle = step*i/(float)w*360.0;
+      float angle = 360.0/sunviz.sunwind.detail*i;
       float activity = wspr.getWSPRData().estimateSolarActivity((int)angle);
-      sunviz.setFieldActivity((int)random(sunviz.activityFields-1), activity);
+      sunviz.setFieldActivity(i, activity);
+      println(step+" "+i+" "+activity+" at "+angle);
     }
   }
 
@@ -182,11 +185,11 @@ class World {
     if (index >= 0) {
       // NODE ALREADY EXISTS
       //nodes.get(index).update(azimuth, distance, energy);
-      nodes.get(index).updateEnergy(energy);
+      nodes.get(index).updateEnergy(energy, spot.getDate());
     }    
     else {
       // NEW NODE
-      WsprNode node = new WsprNode(this, name, azimuth, distance, energy);
+      WsprNode node = new WsprNode(this, name, azimuth, distance, energy, spot.getDate());
       nodes.add(node);
       println("added new node: "+node);
     }

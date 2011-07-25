@@ -7,31 +7,35 @@ Jonas:
 [X] Sonnenaufgang/untergang checken
 [X] Text spiegeln
 [X] alles 180° drehen 
-[ ] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
+[X] was passiert bei setSunFieldActivityFromWSPRNET?? nur var 1 o. 2?
+[-] Sunwind render an die richtige stelle schieben?
+[-] fields im offset berreich
+[ ] history nodes - farbe aktuell gruen , weiss wenn aelter als 24h...
+
 
 Lasse:
-[X] Fullscreen
-[ ] FS testen
+[X] das timeout problem
+[ ] fakeData vorhalten!
 [X] add Arduino-Class (Rotation-sensor)
 [X] Fix: was wenn keine Spots da? oldest/youngest? Komplett überdenken! Max Anzahl, alles behalten, oldest/youngest != null testen
 [ ] obiges testen
 [X] Check: was macht der Constructor wenn keine Spots inna DB?
-[ ] SunViz:  map((float)sun.getAzimuth(), 0, 360, 0, world.w)
 [X] World: in China dann Geokoordinaten nutzen
-[ ] was ist mit den kölner spots, wenn in china? selber bei wsprnet anmelden oder locator checken...
+[X] was ist mit den kölner spots, wenn in china? (selber bei wsprnet anmelden) oder locator checken...
 [X] estimateSolarActivity: in welchem range?
 [X] Kalibrierung: Taste, wenn Norden, Offset merken in Datei
-[ ] estimateSolarActivity: think again!
+[X] estimateSolarActivity: think again!
 [X] Serial: Werte unter 0 abfangen!
 [X] Fakedaten aus Japan (siehe LoadFakeData.pde)
-[ ] Drehrichtung checken
+[X] Drehrichtung checken
 
 Rechner-Setup
-[ ] Windows-Update deaktivieren
-[ ] Energiesparmodus deaktivieren
-[ ] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren
+[X] Windows-Update deaktivieren
+[X] Energiesparmodus deaktivieren
+[X] Datenträgerbereinigung/Auf dem Desktop befinden sich selten benutzte Datein/etc. deaktivieren: Wartungscenter: Benachrichtigungen deaktiviert(done?)
 [X] ASUS-Update deaktivieren
-[ ] Remote-Desktop?
+[X] Auto-Login (SWP Passwort entfernen)
+[X] Remote-Desktop?
 [ ] Autostart von Processing-Programm
 [ ] Autostart von WSPRNET Software
 [ ] Kameraeinstellungen (Mikrofon, Autofokus) 
@@ -50,12 +54,12 @@ SWP:
 
 # WSPRNET
 [X] Funkempfänger anschließen
-[ ] Stereo-Audio-Kabel 2m
+[X] Stereo-Audio-Kabel 2m
 
 # Antenne
 [X] Befestigung Antenne
-[ ] BNC-Stecker ans Kabel
-[ ] Stromversorgung Antenne
+[X] BNC-Stecker ans Kabel
+[X] Stromversorgung Antenne
 
 # Kiste
 [X] Sichtbare Kabelführung: Form, function und so.
@@ -71,7 +75,7 @@ SWP:
 [X] Lautsprecher anlöten
 [X] Stromversorgung Ventilatoren
 [X] Transportkiste Kabellöcher 
-[ ] Transporttasche kaufen
+[X] Transporttasche kaufen
 
 # Baumarkt
 [X] Imbus (M5) und Schraubenschlüssel (M10)
@@ -83,13 +87,21 @@ SWP:
 
 # Mitnehmen
 [ ] Lötkolben/Lötzinn
-[ ] Gaffa, Signalband Orange
-[ ] Kabelbinder
-[ ] Ohrenstöpsel
-[ ] KHM Stuff/MiGAA usw.?
+[X] Gaffa, Signalband Orange
+[X] Kabelbinder
+[X] Ohrenstöpsel
+[X] KHM Stuff/MiGAA usw.?
+[X] Daton hotel ins dokument
+[X] alles ausdrucken
+  [X] Reisesachen ausdrucken (alle Hotels, ETC)
+  [X] alle Quittungen!
+  [X] alle Flugdaten
+  [X] Einladung/Periskopbeschreibung
+[ ] Rolle Draht (um Antenne notfalls zu erden)
+[X] Telefonnummer China?
 
 # öA
-[ ] Pressetext
+[X] Pressetext
 [ ] Blog aktualisieren
 
 # Daten

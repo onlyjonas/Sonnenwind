@@ -1,8 +1,8 @@
 /** Download spots from a receiver in Japan...  */
 import swp.*;
 
-//String myCall = "JQ2WDO";
-//String myGrid = "PM95gi";
+//String myCall = "JA2GRC";
+//String myGrid = "PM74uu";
 
 String myCall = "A0A0A0";
 String myGrid = "OM89EW";  // BEIJING!
