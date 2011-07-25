@@ -26,7 +26,7 @@ class World {
     long twoMinutes = 60*2*1000;
     // String myCall = "A0A0A0";
     // String myGrid = "OM89EW";  // BEIJING!
-    wspr = new WSPRManager("DH3JO", "OM89EW", twoMinutes, true, true); // debug = true, macht jede menge ausgaben
+    wspr = new WSPRManager("DH3JO", "JO30lw", twoMinutes, true, true); // debug = true, macht jede menge ausgaben
     sunviz = new SunViz(this, 900, 15);
     // init node DB
     starttime = millis()-interval;
@@ -146,7 +146,7 @@ class World {
     }
     for (int i=0; i < sunviz.sunwind.detail; i++) {
       float angle = 360.0/sunviz.sunwind.detail*i;
-      float activity = map(wspr.getWSPRData().estimateSolarActivity((int)angle), 0, 1, minActivity, maxActivity);
+      float activity = map(wspr.getWSPRData().estimateSolarActivity((int)angle), minActivity, maxActivity, 0, 1);
       sunviz.setFieldActivity(i, activity);
       println(step+" "+i+" "+activity+" at "+angle);
     }
