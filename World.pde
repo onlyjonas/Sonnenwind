@@ -26,7 +26,7 @@ class World {
     long twoMinutes = 60*2*1000;
     // String myCall = "A0A0A0";
     // String myGrid = "OM89EW";  // BEIJING!
-    wspr = new WSPRManager("DH3JO", "JO30lw", twoMinutes, true, true); // debug = true, macht jede menge ausgaben
+    wspr = new WSPRManager("DH3JO", "OM89EW", twoMinutes, true, true); // debug = true, macht jede menge ausgaben
     sunviz = new SunViz(this, 900, 15);
     // init node DB
     starttime = millis()-interval;

@@ -4,7 +4,7 @@ import swp.*;
 //String myCall = "JA2GRC";
 //String myGrid = "PM74uu";
 
-String myCall = "A0A0A0";
+String myCall = "DH3JO";
 String myGrid = "OM89EW";  // BEIJING!
 
 WSPRManager wspr;
@@ -60,7 +60,8 @@ void draw() {
 
   // let's check solar activity for a few directions
   for (int i=15; i<360; i+=30) {
-    double activity = wspr.getWSPRData().estimateSolarActivity(i);
+    float activity = wspr.getWSPRData().estimateSolarActivity(i);
+    //print(i+": "+activity+" ");
     pushMatrix();
     rotate(radians(i));
     stroke(255,0,0);
@@ -68,7 +69,7 @@ void draw() {
     line(0, 0, 0, (float)(activity/10.0*width/2)+50);
     popMatrix();
   }
-  
+  //println();
   // sun
   pushMatrix();
   // warum + PI???
