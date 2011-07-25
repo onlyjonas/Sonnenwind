@@ -5,9 +5,6 @@ class SunWind {
   float strength=20.0;
   float[] fieldActivity; // 0 = no activity | 1 = full activity
   ArrayList<WindCurve> windCurves = new ArrayList();
-  
-  float maxActivity=1;
-  float minActivity=0;
 
   SunWind(float _windY, float _width, float _height ,int _detail) {
 
@@ -42,11 +39,11 @@ class SunWind {
   }
 
   void setFieldActivity(int index, float activity) {
-    print("activity "+activity);
-    if (activity > maxActivity) maxActivity = activity;
-    if (activity < minActivity) minActivity = activity;
-    activity = map(activity, minActivity, maxActivity, 0, 1);
-    println(" > "+activity);
+//    print("activity "+activity);
+//    if (activity > maxActivity) maxActivity = activity;
+//    if (activity < minActivity) minActivity = activity;
+//    activity = map(activity, minActivity, maxActivity, 0, 1);
+//    println(" > "+activity);
     fieldActivity[index] = activity;
 //    println(index+" is active "+fieldActivity[index]+" max "+maxActivity+", min "+minActivity);
     for (int i = 0;i < windCurves.size(); i++) {
