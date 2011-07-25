@@ -148,7 +148,7 @@ class World {
       float angle = 360.0/sunviz.sunwind.detail*i;
       float activity = map(wspr.getWSPRData().estimateSolarActivity((int)angle), minActivity, maxActivity, 0, 1);
       sunviz.setFieldActivity(i, activity);
-      println(step+" "+i+" "+activity+" at "+angle);
+      //println(step+" "+i+" "+activity+" at "+angle);
     }
   }
 
